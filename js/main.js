@@ -1,13 +1,13 @@
 $(function() {
 
 
-	function getPages(search_param) {
+	function getPages(searchParam) {
 		$.ajax ({
 			url: "php/get_page_content.php",
 			type: "get",
 			dataType: "json",
 			data: {
-				"search_param": search_param
+				"searchParam": searchParam
 			},
 			success: printPagesList,
 			error: function(data) {
@@ -23,14 +23,45 @@ $(function() {
 		for (var i = 0; i < data.length; i++) {
 			var pageListInfo = $("<tr/>");
 			// Add page list info to page
-			pageListInfo.append('<td><span class="badge">'+data[i]["pid"]+"</span></td>");
-			pageListInfo.append('<td>'+data[i]["title"]+"</td>");
+			pageListInfo.append('<th>'+data[i]["pid"]+"</th>");
+			pageListInfo.append('<th>'+data[i]["title"]+"</th>");
 			pageListInfo.append('<td>'+data[i]["author"]+"</td>");
 			pageListInfo.append('<td>'+data[i]["created"]+"</td>");
-			pageListInfo.append('<td>'+data[i]["updated"]+"</td>");
+			// pageListInfo.append('<td>'+data[i]["updated"]+"</td>");
 			$("#pageList table").append(pageListInfo);
 		}
 	}
+
+	// Clickhandler for admin form
+	$("#adminFormBtn").click(function() {
+
+		var pageData = {};
+		pageData[":title"] = $("#pageTitle").val();
+		pageData[":body"] = $("#pageContent").val();
+		
+		saveNewPage(pageData);
+
+		return false;
+	});
+
+	function saveNewPage(pageData) {
+		$.ajax ({
+			url: "php/save_page_content.php",
+			type: "post",
+			dataType: "json",
+			data: {
+				"page_data": pageData
+			},
+			success: function(data) {
+				console.log("saveNewPage success: ", data);
+			},
+			error: function(data) {
+				console.log("saveNewPage error: ", data);
+			}
+		});
+	}
+
+
 
 	// Call needed function
 	getPages();
