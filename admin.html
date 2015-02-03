@@ -42,22 +42,7 @@
 					</div>
 				</section>
 
-				<!-- ToDo - For testing!!!-->
-				<section id="menuList" class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xs-offset-0 col-sm-offset-0 col-md-offset-2 col-lg-offset-2">
-					<div class="panel panel-success">
-						<div class="panel-heading">
-							<h2 class="panel-title">Menu List</h2>
-						</div>
-						<table class="table">
-							<tr class="menuListHeader">
-								<th>Menu Link id:</th>
-								<th>Menu Title:</th>
-								<th>Placement:</th>
-							</tr>
-						</table>
-					</div>
-				</section>
-
+				
 				<section id="adminForm" class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xs-offset-0 col-sm-offset-0 col-md-offset-2 col-lg-offset-2">
 					<form>
 						<div class="form-group">
@@ -76,23 +61,20 @@
 							<textarea class="form-control" rows="10" id="pageContent" placeholder="Enter page content" required></textarea>
 						</div>
 
-						<div class="col-xs-10 col-sm-10 col-md-8 col-lg-8 menuLinkForm">
-							<div class="form-group">
-								<label for="menuChoice">Menu:</label>
-								<input type="text" class="form-control" id="menuTitle" placeholder="Enter menu title">
-								<!-- <select class="form-control" id="menuChoice">
-									<option>blub</option>
-									<option value="addNewMenu">Add new menu</option>
-								</select> -->
-							</div>
-							<div class="form-group">
-								<div class="input-group">								
+						<div class="form-group newMenuForm">
+							<label>Menu:</label>
+								<div class="input-group">
+									<input type="text" class="form-control" id="menuTitle" placeholder="Enter menu title">
 									<span class="input-group-addon" id="inputAddon1">Placement value:</span>
 									<input type="number" min="0" max="6" class="form-control" id="menuPlacement">
 								</div>
-							</div>
-						</div>	
-					
+						</div>
+
+						<div class="form-group menuLinkForm">
+							<select class="form-control" id="menuChoice">
+							</select>
+						</div>
+								
 						<div class="form-group">
 							<button type="submit" id="adminFormBtn" class="btn btn-success btn-lg">Save Page</button>
 						</div>

@@ -23,10 +23,10 @@ $(function() {
 		for (var i = 0; i < data.length; i++) {
 			var pageListInfo = $("<tr/>");
 			// Add page list info to page
-			pageListInfo.append('<th>'+data[i]["pid"]+"</th>");
-			pageListInfo.append('<th>'+data[i]["title"]+"</th>");
-			pageListInfo.append('<td>'+data[i]["author"]+"</td>");
-			pageListInfo.append('<td>'+data[i]["created"]+"</td>");
+			pageListInfo.append("<th>"+data[i]["pid"]+"</th>");
+			pageListInfo.append("<th>"+data[i]["title"]+"</th>");
+			pageListInfo.append("<td>"+data[i]["author"]+"</td>");
+			pageListInfo.append("<td>"+data[i]["created"]+"</td>");
 			// pageListInfo.append('<td>'+data[i]["updated"]+"</td>");
 			$("#pageList table").append(pageListInfo);
 		}
@@ -81,7 +81,7 @@ $(function() {
 				console.log("saveMenu error: ", data);
 			}
 		});
-	}	
+	}
 
 	function getMenus(menuData) {
 		$.ajax ({
@@ -98,19 +98,13 @@ $(function() {
 		});
 	}
 
-	// ToDo - For testing!!!
 	function printMenuList(data) {
 		console.log("printMenus success: ", data);
-		$("#menuList table tr").not(".menuListHeader").remove();
-		// Get page data from DB and append to pageList
+		// Get menu links data from DB and append to dropdown
 		for (var i = 0; i < data.length; i++) {
-			var menuListInfo = $("<tr/>");
-			// Add page list info to page
-			menuListInfo.append('<th>'+data[i]["mlid"]+"</th>");
-			menuListInfo.append('<td>'+data[i]["title"]+"</td>");
-			menuListInfo.append('<td>'+data[i]["placement"]+"</td>");
-
-			$("#menuList table").append(menuListInfo);
+			var menuLinkList = $("#menuChoice");
+			// Add menu link list to form
+			menuLinkList.append("<option>"+data[i]["title"]+"</option>");
 		}
 	}
 
