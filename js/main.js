@@ -38,21 +38,24 @@ $(function() {
 		var pageData = {};
 		pageData[":title"] = $("#pageTitle").val();
 		pageData[":body"] = $("#pageContent").val();
-		pageData[":m_title"] = $("#menuTitle").val();
-		pageData[":placement"] = $("#menuPlacement").val();
+
+		var menuLinkData = {};
+		menuLinkData[":m_title"] = $("#menuTitle").val();
+		menuLinkData[":placement"] = $("#menuPlacement").val();
 		
-		saveNewPage(pageData);
+		saveNewPage(pageData, menuLinkData);
 
 		return false;
 	});
 
-	function saveNewPage(pageData) {
+	function saveNewPage(pageData, menuLinkData) {
 		$.ajax ({
 			url: "php/save_page_content.php",
 			type: "post",
 			dataType: "json",
 			data: {
-				"page_data": pageData
+				"page_data": pageData,
+				"menu_link_data": menuLinkData
 			},
 			success: function(data) {
 				console.log("saveNewPage success: ", data);

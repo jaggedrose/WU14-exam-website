@@ -9,3 +9,7 @@ if (isset($_REQUEST["page_data"])) {
   // Save page and echo SqlQueries response
   echo(json_encode($queries->saveNewPage($_REQUEST["page_data"])));
 }
+
+if (isset($_REQUEST["menu_link_data"])) {
+	echo(json_encode($queries->saveMenuLinks($_REQUEST["menu_link_data"])));
+}
