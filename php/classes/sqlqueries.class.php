@@ -13,7 +13,7 @@ class SqlQueries extends PDOHelper {
 		$sql1 = "INSERT INTO pages (title, body, user_id) VALUES (:title, :body, 1)";
 		return $this->query($sql1, $page_data);
 
-		$sql2 = "INSERT INTO menu_links (title, placement) VALUES (:title, :placement)";
+		$sql2 = "INSERT INTO menu_links (title, placement) VALUES (:m_title, :placement)";
 		return $this->query($sql2, $page_data);
 
 	}
@@ -23,7 +23,7 @@ class SqlQueries extends PDOHelper {
 		return $this->query($sql);
 	}
 
-	public function getMenus() {
+	public function getMenuLinks() {
 		$sql = "SELECT mlid, title, placement FROM menu_links";
 		return $this->query($sql);
 	}

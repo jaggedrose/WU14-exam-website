@@ -38,6 +38,8 @@ $(function() {
 		var pageData = {};
 		pageData[":title"] = $("#pageTitle").val();
 		pageData[":body"] = $("#pageContent").val();
+		pageData[":m_title"] = $("#menuTitle").val();
+		pageData[":placement"] = $("#menuPlacement").val();
 		
 		saveNewPage(pageData);
 
@@ -61,9 +63,44 @@ $(function() {
 		});
 	}
 
+	
+
+	function getMenus(menuData) {
+		$.ajax ({
+			url: "php/get_menu_content.php",
+			type: "get",
+			dataType: "json",
+			data: {
+				"menuData": menuData
+			},
+			success: printMenuList,
+			error: function(data) {
+				console.log("getmenus error: ", data);
+			}
+		});
+	}
+
+	// ToDo - For testing!!!
+	function printMenuList(data) {
+		console.log("printMenus success: ", data);
+		$("#menuList table tr").not(".menuListHeader").remove();
+		// Get page data from DB and append to pageList
+		for (var i = 0; i < data.length; i++) {
+			var menuListInfo = $("<tr/>");
+			// Add page list info to page
+			menuListInfo.append('<th>'+data[i]["mlid"]+"</th>");
+			menuListInfo.append('<td>'+data[i]["title"]+"</td>");
+			menuListInfo.append('<td>'+data[i]["placement"]+"</td>");
+
+			$("#menuList table").append(menuListInfo);
+		}
+	}
+
 
 
 	// Call needed function
+	getMenus();
 	getPages();
+
 
 });
