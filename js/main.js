@@ -39,22 +39,40 @@ $(function() {
 		pageData[":title"] = $("#pageTitle").val();
 		pageData[":body"] = $("#pageContent").val();
 
-		var menuLinkData = {};
-		menuLinkData[":m_title"] = $("#menuTitle").val();
-		menuLinkData[":placement"] = $("#menuPlacement").val();
-		
-		saveNewPage(pageData, menuLinkData);
+		saveNewPage(pageData);
 
 		return false;
 	});
 
-	function saveNewPage(pageData, menuLinkData) {
+	function saveNewPage(pageData) {
 		$.ajax ({
 			url: "php/save_page_content.php",
 			type: "post",
 			dataType: "json",
 			data: {
-				"page_data": pageData,
+				"page_data": pageData
+			},
+			success: function(data) {
+				saveMenu();
+				console.log("saveNewPage success: ", data);
+			},
+			error: function(data) {
+				console.log("saveNewPage error: ", data);
+			}
+		});
+	}
+
+
+	function saveMenu() {
+		var menuLinkData = {};
+		menuLinkData[":m_title"] = $("#menuTitle").val();
+		menuLinkData[":placement"] = $("#menuPlacement").val();
+
+		$.ajax ({
+			url: "php/save_page_content.php",
+			type: "post",
+			dataType: "json",
+			data: {
 				"menu_link_data": menuLinkData
 			},
 			success: function(data) {
@@ -65,7 +83,6 @@ $(function() {
 			}
 		});
 	}
-
 	
 
 	function getMenus(menuData) {
