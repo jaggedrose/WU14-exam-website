@@ -20,15 +20,14 @@ class SqlQueries extends PDOHelper {
 		return $this->query($sql);
 	}
 
-
-	public function saveMenuLinks($menu_link_data) {
-		$sql = "INSERT INTO menu_links (title, placement) VALUES (:m_title, :placement)";
-		return $this->query($sql, $menu_link_data);
-	}
-
 	public function getMenuLinks() {
 		$sql = "SELECT mlid, title, placement FROM menu_links";
 		return $this->query($sql);
+	}
+
+	public function saveMenuLink($menu_link_data) {
+		$sql = "INSERT INTO menu_links (title, placement, menu) VALUES (:m_title, :placement, menu-main-menu)";
+		return $this->query($sql, $menu_link_data);
 	}
 
 	// public function searchPages($search_param) {

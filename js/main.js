@@ -67,6 +67,7 @@ $(function() {
 		var menuLinkData = {};
 		menuLinkData[":m_title"] = $("#menuTitle").val();
 		menuLinkData[":placement"] = $("#menuPlacement").val();
+		console.log(menuLinkData);
 
 		$.ajax ({
 			url: "php/save_page_content.php",
@@ -76,14 +77,13 @@ $(function() {
 				"menu_link_data": menuLinkData
 			},
 			success: function(data) {
-				console.log("saveNewPage success: ", data);
+				console.log("saveMenu success: ", data);
 			},
 			error: function(data) {
-				console.log("saveNewPage error: ", data);
+				console.log("saveMenu error: ", data);
 			}
 		});
 	}
-	
 
 	function getMenus(menuData) {
 		$.ajax ({
