@@ -26,7 +26,7 @@ class SqlQueries extends PDOHelper {
 	}
 
 	public function saveMenuLink($menu_link_data) {
-		$sql = "INSERT INTO menu_links (title, placement, menu) VALUES (:m_title, :placement, menu-main-menu)";
+		$sql = "INSERT INTO menu_links (title, placement, menu) VALUES (:m_title, :placement, 'menu-main-menu')";
 		return $this->query($sql, $menu_link_data);
 	}
 

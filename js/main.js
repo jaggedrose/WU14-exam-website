@@ -62,12 +62,10 @@ $(function() {
 		});
 	}
 
-
 	function saveMenu() {
 		var menuLinkData = {};
 		menuLinkData[":m_title"] = $("#menuTitle").val();
 		menuLinkData[":placement"] = $("#menuPlacement").val();
-		console.log(menuLinkData);
 
 		$.ajax ({
 			url: "php/save_page_content.php",
@@ -83,7 +81,7 @@ $(function() {
 				console.log("saveMenu error: ", data);
 			}
 		});
-	}
+	}	
 
 	function getMenus(menuData) {
 		$.ajax ({
