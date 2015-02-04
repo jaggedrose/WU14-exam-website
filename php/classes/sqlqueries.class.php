@@ -12,7 +12,20 @@ class SqlQueries extends PDOHelper {
 		//$sql1 = "INSERT INTO pages (title, body, user_id) VALUES (" . $page_data["title"]."," . $page_data["body"].",1)";
 		$sql1 = "INSERT INTO pages (title, body, user_id) VALUES (:title, :body, 1)";
 		return $this->query($sql1, $page_data);
+	}
 
+	public function saveUrlPath($path_data) {
+		$sql1 = "SELECT CONCAT('pageid=',pid) AS path FROM pages ORDER BY created DESC LIMIT 1";
+		$last_pid = $this->query($sql);
+
+		// Get pid from the array we got back
+		$last_pid = $last_pid[0]["pid"];
+
+		$page_path = $path_data["path"];
+
+		$sql2 = "INSERT INTO url_alias (path, pid) VALUES (:path, :pid)";
+		$url_path_data = array(":path" => $page_path, ":pid" = > $last_pid);
+		return $this->query($sql2, $url_path_data);
 	}
 
 	public function getPages() {

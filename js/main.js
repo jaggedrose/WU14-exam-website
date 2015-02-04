@@ -61,7 +61,7 @@ $(function() {
 			}
 		});
 	}
-
+	// ToDo - if new menu link save all else just save page & path???
 	function saveMenu() {
 		var menuLinkData = {};
 		menuLinkData[":m_title"] = $("#menuTitle").val();
@@ -83,7 +83,7 @@ $(function() {
 		});
 	}
 
-	function getMenus(menuData) {
+		function getMenus(menuData) {
 		$.ajax ({
 			url: "php/get_menu_content.php",
 			type: "get",
