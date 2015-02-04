@@ -23,7 +23,7 @@ $(function() {
 		for (var i = 0; i < data.length; i++) {
 			var pageListInfo = $("<tr/>");
 			// Add page list info to page
-			pageListInfo.append("<th>"+data[i]["pid"]+"</th>");
+			pageListInfo.append("<th><a href=\"#"+data[i]["pid"]+"\">"+data[i]["pid"]+"</a></th>");
 			pageListInfo.append("<th>"+data[i]["title"]+"</th>");
 			pageListInfo.append("<td>"+data[i]["author"]+"</td>");
 			pageListInfo.append("<td>"+data[i]["created"]+"</td>");
@@ -108,6 +108,8 @@ $(function() {
 			menuLinkList.append("<option>"+data[i]["title"]+"</option>");
 		}
 	}
+
+
 
 
 
