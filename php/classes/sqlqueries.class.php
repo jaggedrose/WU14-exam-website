@@ -24,7 +24,10 @@ class SqlQueries extends PDOHelper {
 		$page_path = $path_data["path"];
 
 		$sql2 = "INSERT INTO url_alias (path, pid) VALUES (:path, :pid)";
-		$url_path_data = array(":path" => $page_path, ":pid" = > $last_pid);
+		$url_path_data = array(
+			":path" => $page_path,
+			":pid" => $last_pid
+			);
 		return $this->query($sql2, $url_path_data);
 	}
 

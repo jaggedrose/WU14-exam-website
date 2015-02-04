@@ -62,7 +62,7 @@ $(function() {
 		});
 	}
 
-	function saveUrlAlias() {
+	function saveUrlAlias(pathData) {
 		$.ajax ({
 			url: "php/save_page_content.php",
 			type: "post",
