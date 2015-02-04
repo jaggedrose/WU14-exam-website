@@ -53,7 +53,7 @@ $(function() {
 				"page_data": pageData
 			},
 			success: function(data) {
-				saveUrlAlias();
+				saveMenu();
 				console.log("saveNewPage success: ", data);
 			},
 			error: function(data) {
@@ -62,25 +62,7 @@ $(function() {
 		});
 	}
 
-	function saveUrlAlias(pathData) {
-		$.ajax ({
-			url: "php/save_page_content.php",
-			type: "post",
-			dataType: "json",
-			data: {
-				"path_data": pathData
-			},
-			success: function(data) {
-				saveMenu();
-				console.log("saveUrlAlias success: ", data);
-			},
-			error: function(data) {
-				console.log("saveUrlAlias error: ", data);
-			}
-		});
-	}
-
-	// ToDo - if new menu link save all else just save page & path???
+		// ToDo - if new menu link save all else just save page & path???
 	function saveMenu() {
 		var menuLinkData = {};
 		menuLinkData[":m_title"] = $("#menuTitle").val();

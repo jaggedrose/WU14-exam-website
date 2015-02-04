@@ -14,21 +14,17 @@ class SqlQueries extends PDOHelper {
 		return $this->query($sql1, $page_data);
 	}
 
-	public function saveUrlPath($path_data) {
-		$sql1 = "SELECT CONCAT('pageid=',pid) AS path FROM pages ORDER BY created DESC LIMIT 1";
-		$last_pid = $this->query($sql);
+	public function saveMenuLink($menu_link_data) {
+		$sql1 = "SELECT pid FROM pages ORDER BY created DESC LIMIT 1";
+		$last_pid = $this->query($sql1);
 
 		// Get pid from the array we got back
 		$last_pid = $last_pid[0]["pid"];
 
-		$page_path = $path_data["path"];
+		$page_path = "pageid=".$last_pid;
 
-		$sql2 = "INSERT INTO url_alias (path, pid) VALUES (:path, :pid)";
-		$url_path_data = array(
-			":path" => $page_path,
-			":pid" => $last_pid
-			);
-		return $this->query($sql2, $url_path_data);
+		$sql2 = "INSERT INTO menu_links (title, placement, path, menu) VALUES (:m_title, :placement, '$page_path', 'menu-main-menu')";
+		return $this->query($sql2, $menu_link_data);
 	}
 
 	public function getPages() {
@@ -41,10 +37,7 @@ class SqlQueries extends PDOHelper {
 		return $this->query($sql);
 	}
 
-	public function saveMenuLink($menu_link_data) {
-		$sql = "INSERT INTO menu_links (title, placement, menu) VALUES (:m_title, :placement, 'menu-main-menu')";
-		return $this->query($sql, $menu_link_data);
-	}
+	
 
 	// public function searchPages($search_param) {
 	// 	$search_param = array(":search_param" => "%".$search_param."%");

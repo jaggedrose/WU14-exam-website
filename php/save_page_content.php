@@ -10,10 +10,6 @@ if (isset($_REQUEST["page_data"])) {
   echo(json_encode($queries->saveNewPage($_REQUEST["page_data"])));
 }
 
-if (isset($_REQUEST["path_data"])) {
-	echo(json_encode($queries->saveUrlPath($_REQUEST["path_data"])));
-}
-
 if (isset($_REQUEST["menu_link_data"])) {
 	echo(json_encode($queries->saveMenuLink($_REQUEST["menu_link_data"])));
 }
