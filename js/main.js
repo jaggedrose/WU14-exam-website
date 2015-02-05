@@ -51,10 +51,11 @@ $(function() {
 		});
 	}
 
-	function printPageForEdit(thisPageData) {
+	function printPageForEdit(data) {
 		console.log("printPageForEdit success: ", data);
-
-		
+		// var thisPage = $("#adminForm form");
+		$("#pageTitle").val(data["title"]);
+		$("#pageContent").val(data["body"]);
 	}
 
 	// Clickhandler for admin form
