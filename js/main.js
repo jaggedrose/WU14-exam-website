@@ -7,7 +7,7 @@ $(function() {
 			type: "get",
 			dataType: "json",
 			data: {
-				"searchParam": searchParam
+				"search_param": searchParam
 			},
 			success: printPagesList,
 			error: function(data) {
@@ -17,7 +17,7 @@ $(function() {
 	}
 
 	function printPagesList(data) {
-		console.log("printPages success: ", data);
+		console.log("printPagesList success: ", data);
 		$("#pageList table tr").not(".pageListHeader").remove();
 		// Get page data from DB and append to pageList
 		for (var i = 0; i < data.length; i++) {
@@ -44,13 +44,17 @@ $(function() {
 			data: {
 				"chosen_page": chosenPage
 			},
-			success: function(data) {
-				console.log("getPageForEdit success: ", data);
-			},
+			success: printPageForEdit,
 			error: function(data) {
 				console.log("getPageForEdit error: ", data);
 			}
 		});
+	}
+
+	function printPageForEdit(thisPageData) {
+		console.log("printPageForEdit success: ", data);
+
+		
 	}
 
 	// Clickhandler for admin form
