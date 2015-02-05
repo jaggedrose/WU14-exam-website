@@ -35,6 +35,11 @@ class SqlQueries extends PDOHelper {
 		return $this_page_data;
 	}
 
+	public function updatePage($update_data) {
+		$sql = "UPDATE pages SET title=:title, body=:body WHERE pid = :pid";
+		return $this->query($sql, $update_data);
+	}
+
 	public function getPagesList() {
 		$sql = "SELECT pages.pid, pages.title, pages.body, pages.created, CONCAT(users.fname, ' ', users.lname) as author FROM pages, users";
 		return $this->query($sql);

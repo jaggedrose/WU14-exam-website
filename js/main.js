@@ -53,12 +53,46 @@ $(function() {
 
 	function printPageForEdit(data) {
 		console.log("printPageForEdit success: ", data);
-		// var thisPage = $("#adminForm form");
+		
 		$("#pageTitle").val(data[0]["title"]);
 		$("#pageContent").val(data[0]["body"]);
+
+		$("#updateFormBtn").prop('value', data[0]["pid"]);
 	}
 
-	// Clickhandler for admin form
+	// Click handler for admin form Update page
+	$("#updateFormBtn").click(function() {
+
+		var updateData = {};
+		updateData[":title"] = $("#pageTitle").val();
+		updateData[":body"] = $("#pageContent").val();
+		updateData[":pid"] = $("#updateFormBtn").val();
+
+		console.log(updateData);
+		updatePage(updateData);
+
+		return false;
+	});
+
+	function updatePage(updateData) {
+		$.ajax ({
+			url: "php/save_page_content.php",
+			type: "post",
+			dataType: "json",
+			data: {
+				"update_data": updateData
+			},
+			success: function(data) {
+				// saveMenu();
+				console.log("updatePage success: ", data);
+			},
+			error: function(data) {
+				console.log("updatePage error: ", data);
+			}
+		});
+	}
+
+	// Click handler for admin form Save new page
 	$("#adminFormBtn").click(function() {
 
 		var pageData = {};
