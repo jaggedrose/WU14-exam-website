@@ -27,7 +27,12 @@ class SqlQueries extends PDOHelper {
 		return $this->query($sql2, $menu_link_data);
 	}
 
-	public function getPages() {
+	public function getChosenPage($chosen_page) {
+		$sql ="SELECT title, body FROM pages WHERE pid = :pid";
+		return $this->query($sql);
+	}
+
+	public function getPagesList() {
 		$sql = "SELECT pages.pid, pages.title, pages.body, pages.created, CONCAT(users.fname, ' ', users.lname) as author FROM pages, users";
 		return $this->query($sql);
 	}

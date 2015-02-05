@@ -1,7 +1,7 @@
 $(function() {
 
 
-	function getPages(searchParam) {
+	function getPagesList(searchParam) {
 		$.ajax ({
 			url: "php/get_page_content.php",
 			type: "get",
@@ -23,13 +23,34 @@ $(function() {
 		for (var i = 0; i < data.length; i++) {
 			var pageListInfo = $("<tr/>");
 			// Add page list info to page
-			pageListInfo.append("<th><a href=\"#"+data[i]["pid"]+"\">"+data[i]["pid"]+"</a></th>");
-			pageListInfo.append("<th>"+data[i]["title"]+"</th>");
-			pageListInfo.append("<td>"+data[i]["author"]+"</td>");
-			pageListInfo.append("<td>"+data[i]["created"]+"</td>");
-			// pageListInfo.append('<td>'+data[i]["updated"]+"</td>");
+			pageListInfo.append('<th>'+data[i]["pid"]+'</th>');
+			pageListInfo.append('<th>'+data[i]["title"]+'</th>');
+			pageListInfo.append('<td>'+data[i]["author"]+'</td>');
+			pageListInfo.append('<td>'+data[i]["created"]+'</td>');
+			pageListInfo.append('<td><button class="editPage btn btn-info btn-sm" value="'+data[i]["pid"]+'"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button> <button class="viewPage btn btn-warning btn-sm" value="'+data[i]["pid"]+'"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></button></td>');
 			$("#pageList table").append(pageListInfo);
 		}
+
+		$(".editPage").click(function() {
+			getPageForEdit($(this).val());
+		});
+	}
+
+	function getPageForEdit(chosenPage) {
+		$.ajax ({
+			url: "php/save_page_content.php",
+			type: "get",
+			dataType: "json",
+			data: {
+				"chosen_page": chosenPage
+			},
+			success: function(data) {
+				console.log("getPageForEdit success: ", data);
+			},
+			error: function(data) {
+				console.log("getPageForEdit error: ", data);
+			}
+		});
 	}
 
 	// Clickhandler for admin form
@@ -109,13 +130,14 @@ $(function() {
 		}
 	}
 
-
-
+	function loadPageContent(pageId) {
+		return false;
+	}
 
 
 	// Call needed function
 	getMenus();
-	getPages();
+	getPagesList();
 
 
 });
