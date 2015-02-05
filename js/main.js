@@ -54,8 +54,8 @@ $(function() {
 	function printPageForEdit(data) {
 		console.log("printPageForEdit success: ", data);
 		// var thisPage = $("#adminForm form");
-		$("#pageTitle").val(data["title"]);
-		$("#pageContent").val(data["body"]);
+		$("#pageTitle").val(data[0]["title"]);
+		$("#pageContent").val(data[0]["body"]);
 	}
 
 	// Clickhandler for admin form
