@@ -11,7 +11,7 @@ $(function() {
 			},
 			success: printPagesList,
 			error: function(data) {
-				console.log("getPages error: ", data);
+				console.log("getPagesList error: ", data);
 			}
 		});
 	}
@@ -38,7 +38,7 @@ $(function() {
 
 	function getPageForEdit(chosenPage) {
 		$.ajax ({
-			url: "php/save_page_content.php",
+			url: "php/get_page_content.php",
 			type: "get",
 			dataType: "json",
 			data: {

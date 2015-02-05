@@ -28,8 +28,13 @@ class SqlQueries extends PDOHelper {
 	}
 
 	public function getChosenPage($chosen_page) {
-		$sql ="SELECT title, body FROM pages WHERE pid = :pid";
-		return $this->query($sql);
+
+		$this_page = array(":pid" => $chosen_page);
+		$sql ="SELECT pid, title, body FROM pages WHERE pid = :pid";
+		$page_data = $this->query($sql, $this_page);
+
+		return $page_data;
+
 	}
 
 	public function getPagesList() {
@@ -51,3 +56,4 @@ class SqlQueries extends PDOHelper {
 	// }
 
 }
+
