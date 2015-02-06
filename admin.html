@@ -4,9 +4,13 @@
 		<title>Admin</title>
 		<meta charset="utf-8">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-		<script src="js/bootstrap.js"></script>
-		<script src="js/ajax_calls.js"></script>
+		<script src="js/libs/bootstrap.js"></script>
+		<!-- include our .js -->
+		<script src="js/pushpop.js"></script>
+		<script src="js/ajax.js"></script>
+		<script src="js/buildAdminPage.js"></script>
 		<script src="js/main.js"></script>
+		<!-- include our .css -->
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 	</head>
@@ -59,17 +63,25 @@
 						</div>
 
 						<div class="form-group menuForm">
-							<label>Menu:</label>
-								<div class="input-group newMenuForm">
-									<input type="text" class="form-control" id="menuTitle" placeholder="Enter menu title">
-									<span class="input-group-addon" id="inputAddon1">Placement value:</span>
-									<input type="number" min="0" max="6" class="form-control" id="menuPlacement">
-								</div>
-						</div>
+							<div class="checkbox">
+								<label class="checkbox-inline">
+									<input type="checkbox" id="addNewMenu" value="addNewMenu"> Add new menu
+								</label>
+								<label class="checkbox-inline">
+									<input type="checkbox" id="existingMenu" value="existingMenu"> Add to existing menu
+								</label>
+							</div>
 
-						<div class="form-group menuLinkForm">
-							<select class="form-control" id="menuChoice">
-							</select>
+							<div class="input-group newMenuForm">
+								<input type="text" class="form-control" id="menuTitle" placeholder="Enter menu title">
+								<span class="input-group-addon" id="inputAddon1">Placement value:</span>
+								<input type="number" min="0" max="6" class="form-control" id="menuPlacement">
+							</div>
+					
+							<div class="form-group menuLinkForm">
+								<select class="form-control" id="menuChoice">
+								</select>
+							</div>
 						</div>
 								
 						<div class="form-group">
