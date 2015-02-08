@@ -19,6 +19,10 @@ function printPagesList(data) {
 
 	$(".editPage").click(function() {
 		getPageForEdit($(this).val());
+
+		$("#updateFormBtn").show();
+		$("#adminFormBtn").hide();
+
 	});
 }
 
@@ -27,7 +31,6 @@ function printPageForEdit(data) {
 	
 	$("#pageTitle").val(data[0]["title"]);
 	$("#pageContent").val(data[0]["body"]);
-
 	$("#updateFormBtn").prop('value', data[0]["pid"]);
 }
 
@@ -41,16 +44,18 @@ function printMenuList(data) {
 	}
 }
 
+
 // 
 // Click Handlers on Admin pageListInfo
 // 
-
 
 function onDomReady() {
 
 	$("#adminForm .menuChoiceBtns").hide();
 	$("#adminForm .newMenuForm").hide();
 	$("#adminForm .menuLinkForm").hide();
+	$("#adminForm #updateFormBtn").hide();
+
 
 	// checkbox clickhandler for admin form - to show/hide menu fields
 	$('.menuForm input[type="checkbox"]').click(function() {
@@ -83,6 +88,7 @@ function onDomReady() {
 		// $(".addToMenu #menu_title").attr("required", $(this).is(":checked"));
 	});
 
+	
 	// Clickhandler for admin form - Save new page
 	$("#adminFormBtn").click(function() {
 
@@ -93,7 +99,7 @@ function onDomReady() {
 		saveNewPage(pageData);
 
 		// Empty the form once we're done with the information in it
-		this.reset();
+		// $("#adminForm").reset();
 
 		return false;
 	});
@@ -111,7 +117,7 @@ function onDomReady() {
 		updatePage(updateData);
 
 		// Empty the form once we're done with the information in it
-		this.reset();
+		// $("#adminForm").reset();
 
 		return false;
 	});
