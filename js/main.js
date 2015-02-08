@@ -5,8 +5,9 @@ $(function() {
 	// 	return false;
 	// }
 
-
+	
 	// Call needed functions
+	onDomReady();
 	getMenus();
 	getPagesList();
 

@@ -35,7 +35,7 @@ function printMenuList(data) {
 	console.log("printMenus success: ", data);
 	// Get menu links data from DB and append to dropdown
 	for (var i = 0; i < data.length; i++) {
-		var menuLinkList = $("#menuChoice");
+		var menuLinkList = $("#menuLink");
 		// Add menu link list to form
 		menuLinkList.append("<option>"+data[i]["title"]+"</option>");
 	}
@@ -45,30 +45,76 @@ function printMenuList(data) {
 // Click Handlers on Admin pageListInfo
 // 
 
-// Click handler for admin form Save new page
-$("#adminFormBtn").click(function() {
 
-	var pageData = {};
-	pageData[":title"] = $("#pageTitle").val();
-	pageData[":body"] = $("#pageContent").val();
+function onDomReady() {
 
-	saveNewPage(pageData);
+	$("#adminForm .menuChoiceBtns").hide();
+	$("#adminForm .newMenuForm").hide();
+	$("#adminForm .menuLinkForm").hide();
 
-	return false;
-});
+	// checkbox clickhandler for admin form - to show/hide menu fields
+	$('.menuForm input[type="checkbox"]').click(function() {
+		if ($(this).is(":checked")) {
+			$(".menuChoiceBtns").fadeIn(300);
+		} else {
+			$('.menuForm input[type="radio"]').removeAttr("checked");
+			$(".newMenuForm").fadeOut(300);
+			$(".menuLinkForm").fadeOut(300);
+			$(".menuChoiceBtns").fadeOut(700);
+		}
+	});
 
-	
-// Click handler for admin form Update page
-$("#updateFormBtn").click(function() {
+	// Radio clickhandler for admin form - to show/hide menu fields
+	$('.menuForm input[type="radio"]').click(function() {
+		if ($("#addNewMenu").is(":checked")) {
+			$(".newMenuForm").show();
+		} else {
+			$(".newMenuForm").hide();
+		}
 
-	var updateData = {};
-	updateData[":title"] = $("#pageTitle").val();
-	updateData[":body"] = $("#pageContent").val();
-	updateData[":pid"] = $("#updateFormBtn").val();
+		if ($("#existingMenu").is(":checked")) {
+			$(".menuLinkForm").show();
+		} else {
+			$(".menuLinkForm").hide();
+		}
+		
+		//whenever the user clicks add to menu, 
+		//make the menu title field required
+		// $(".addToMenu #menu_title").attr("required", $(this).is(":checked"));
+	});
 
-	console.log(updateData);
-	updatePage(updateData);
+	// Clickhandler for admin form - Save new page
+	$("#adminFormBtn").click(function() {
 
-	return false;
-});
+		var pageData = {};
+		pageData[":title"] = $("#pageTitle").val();
+		pageData[":body"] = $("#pageContent").val();
+
+		saveNewPage(pageData);
+
+		// Empty the form once we're done with the information in it
+		this.reset();
+
+		return false;
+	});
+
+		
+	// Clickhandler for admin form - Update page
+	$("#updateFormBtn").click(function() {
+
+		var updateData = {};
+		updateData[":title"] = $("#pageTitle").val();
+		updateData[":body"] = $("#pageContent").val();
+		updateData[":pid"] = $("#updateFormBtn").val();
+
+		console.log(updateData);
+		updatePage(updateData);
+
+		// Empty the form once we're done with the information in it
+		this.reset();
+
+		return false;
+	});
+
+}
 

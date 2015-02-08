@@ -64,12 +64,18 @@
 
 						<div class="form-group menuForm">
 							<div class="checkbox">
-								<label class="checkbox-inline">
-									<input type="checkbox" id="addNewMenu" value="addNewMenu"> Add new menu
+		                  <label>
+		                    <input type="checkbox" value=""> Add page to menu
+		                  </label>
+		               </div>
+														
+							<div class="radio menuChoiceBtns">
+								<label class="radio-inline">
+									<input type="radio" name="addMenu" id="addNewMenu" value="addNewMenu"> Add new menu
 								</label>
-								<label class="checkbox-inline">
-									<input type="checkbox" id="existingMenu" value="existingMenu"> Add to existing menu
-								</label>
+								<label class="radio-inline">
+									<input type="radio" name="addMenu" id="existingMenu" value="existingMenu"> Add to existing menu
+								</lable>
 							</div>
 
 							<div class="input-group newMenuForm">
@@ -79,9 +85,10 @@
 							</div>
 					
 							<div class="form-group menuLinkForm">
-								<select class="form-control" id="menuChoice">
+								<select class="form-control" id="menuLink">
 								</select>
 							</div>
+							
 						</div>
 								
 						<div class="form-group">
