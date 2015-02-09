@@ -51,6 +51,8 @@ function printMenuList(data) {
 
 function onDomReady() {
 
+	pushPopListeners();
+
 	$("#adminForm .menuChoiceBtns").hide();
 	$("#adminForm .newMenuForm").hide();
 	$("#adminForm .topMenuForm").hide();
