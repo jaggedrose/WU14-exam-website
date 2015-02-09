@@ -38,7 +38,7 @@ function printMenuList(data) {
 	console.log("printMenus success: ", data);
 	// Get menu links data from DB and append to dropdown
 	for (var i = 0; i < data.length; i++) {
-		var menuLinkList = $("#menuLink");
+		var menuLinkList = $("#topMenuLinks");
 		// Add menu link list to form
 		menuLinkList.append("<option>"+data[i]["title"]+"</option>");
 	}
@@ -53,7 +53,8 @@ function onDomReady() {
 
 	$("#adminForm .menuChoiceBtns").hide();
 	$("#adminForm .newMenuForm").hide();
-	$("#adminForm .menuLinkForm").hide();
+	$("#adminForm .topMenuForm").hide();
+	$("#adminForm .subMenuForm").hide();
 	$("#adminForm #updateFormBtn").hide();
 
 
@@ -64,7 +65,7 @@ function onDomReady() {
 		} else {
 			$('.menuForm input[type="radio"]').removeAttr("checked");
 			$(".newMenuForm").fadeOut(300);
-			$(".menuLinkForm").fadeOut(300);
+			$(".topMenuForm").fadeOut(300);
 			$(".menuChoiceBtns").fadeOut(700);
 		}
 	});
@@ -78,15 +79,24 @@ function onDomReady() {
 		}
 
 		if ($("#existingMenu").is(":checked")) {
-			$(".menuLinkForm").show();
+			$(".topMenuForm").show();
 		} else {
-			$(".menuLinkForm").hide();
+			$(".topMenuForm").hide();
 		}
 		
 		//whenever the user clicks add to menu, 
 		//make the menu title field required
 		// $(".addToMenu #menu_title").attr("required", $(this).is(":checked"));
 	});
+
+	// // checkbox clickhandler for menu choice - to show/hide menu fields
+	// $('.menuForm input[type="checkbox"]').click(function() {
+	// 	if ($(this).is(":checked")) {
+	// 		$(".menuChoiceBtns").fadeIn(300);
+	// 	} else {
+	// 		$(".menuChoiceBtns").fadeOut(300);
+	// 	}
+	// });
 
 	
 	// Clickhandler for admin form - Save new page
