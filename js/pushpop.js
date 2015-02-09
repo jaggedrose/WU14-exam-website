@@ -5,6 +5,10 @@
 
 //setup push/pop-state pushPopListeners for <a> tags
 function pushPopListeners() {
+
+  // Decide what to show
+  onPopAndStart();
+
   // When we click a link
   $(document).on("click","a",function(event){
 
@@ -14,10 +18,9 @@ function pushPopListeners() {
       return;
     }
 
-    // //prevent "empty" urls from affecting browsing
-    // if ($(this).attr("href") && $(this).attr("href") !== "#") {
-    //   goTo($(this).attr("href"));
-    // }
+    $("main .row").children().hide();
+    $('section#'+$(this).attr("href")).show();
+
     history.pushState(null,null,$(this).attr("href"));
     showSection($(this).attr("href"));
     event.preventDefault();
@@ -27,9 +30,7 @@ function pushPopListeners() {
   // (listen to forward/backward buttons in the browser)
   addEventListener("popstate",onPopAndStart);
 
-  //and run once immediately (this function runs at DOM ready)
-  onPopAndStart();
-
+  
   // Run this function on popstate and initial load
   function onPopAndStart(){
     // Read our url and extract the page name
@@ -37,27 +38,25 @@ function pushPopListeners() {
     var l = location.href;
     //might need to change this
     var pageName = l.substring(l.lastIndexOf("/")+1);
-
     // if no pageName set pageName to false
     pageName = pageName || false;
     console.log("pageName: ", pageName);
-    //and showSection
+
+    $("main .row").children().hide();
+    $('section#'+pageName).show();
+    // and showSection
     showSection(pageName);
   }
 
   function showSection(pageName) {
     console.log("showSection: ", pageName);
-    $("section").hide();
-    $('section#'+pageName).show();
+    
+    $(".nav li").removeClass("active");
 
-    // $(".nav li").removeClass("active");
     //then find any links in body pointing to the pageUrl,
     $("body").find('a[href="'+pageName+'"]').each(function() {
       //and add .active to my parent if it is an li tag
       $(this).parent("li").addClass("active");
     });
-
-    $(".navbar li a").parent("li").removeClass("active");
-    // $('.navbar li a[href='+ pageName +']').parent("li").addClass("active");
   }
 }
