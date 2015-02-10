@@ -60,6 +60,12 @@ function onDomReady() {
 	$("#adminForm #updateFormBtn").hide();
 
 
+	// admin button clickhandler - to show/hide admin page
+	$('#adminLogin').click(function() {
+		$(".myAdminPageMenu").fadeIn(300);
+	});
+
+
 	// checkbox clickhandler for admin form - to show/hide menu fields
 	$('.menuForm input[type="checkbox"]').click(function() {
 		if ($(this).is(":checked")) {
@@ -85,20 +91,20 @@ function onDomReady() {
 		} else {
 			$(".topMenuForm").hide();
 		}
-		
+
 		//whenever the user clicks add to menu, 
 		//make the menu title field required
 		// $(".addToMenu #menu_title").attr("required", $(this).is(":checked"));
 	});
 
-	// // checkbox clickhandler for menu choice - to show/hide menu fields
-	// $('.menuForm input[type="checkbox"]').click(function() {
-	// 	if ($(this).is(":checked")) {
-	// 		$(".menuChoiceBtns").fadeIn(300);
-	// 	} else {
-	// 		$(".menuChoiceBtns").fadeOut(300);
-	// 	}
-	// });
+	// checkbox clickhandler for menu choice - to show/hide menu fields
+	$('.menuForm input[type="checkbox"]').click(function() {
+		if ($(this).is(":checked")) {
+			$(".menuChoiceBtns").fadeIn(300);
+		} else {
+			$(".menuChoiceBtns").fadeOut(300);
+		}
+	});
 
 	
 	// Clickhandler for admin form - Save new page
