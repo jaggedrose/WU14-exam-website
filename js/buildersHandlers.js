@@ -19,7 +19,9 @@ function printPagesList(data) {
 
 	$(".editPage").click(function() {
 		getPageForEdit($(this).val());
-
+		$("#myAdminPageMenu").show();
+      $("#adminForm").fadeIn(200);
+      $("#pageList").hide();
 		$("#updateFormBtn").show();
 		$("#adminFormBtn").hide();
 
@@ -62,7 +64,7 @@ function onDomReady() {
 
 	// admin button clickhandler - to show/hide admin page
 	$('#adminLogin').click(function() {
-		$(".myAdminPageMenu").fadeIn(300);
+		$("#myAdminPageMenu").fadeIn(300);
 	});
 
 
