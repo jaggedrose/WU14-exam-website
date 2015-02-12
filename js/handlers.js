@@ -39,13 +39,6 @@ function onDomReady() {
 			$(".newMenuForm").hide();
 			$(".menuLinksList").hide();
 		}
-
-		// if ($("#existingMenu").is(":checked")) {
-		// 	$(".topMenuForm").show();
-		// } else {
-		// 	$(".topMenuForm").hide();
-		// }
-
 	});
 
 	// checkbox clickhandler for menu choice - to show/hide menu fields
