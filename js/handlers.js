@@ -14,7 +14,7 @@ function onDomReady() {
 
 	// admin button clickhandler - to show/hide admin page
 	$('#adminLogin').click(function() {
-		$("#adminForm #myAdminPageMenu").fadeIn(300);
+		$("#myAdminPageMenu").fadeIn(300);
 	});
 
 

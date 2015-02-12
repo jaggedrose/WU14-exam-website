@@ -24,13 +24,6 @@ class SqlQueries extends PDOHelper {
 		$page_path = "pageid=".$last_pid;
 
 		$sql2 = "INSERT INTO menu_links (title, placement, plid, path, menu) VALUES (:m_title, :placement, :plid, '$page_path', 'menu-main-menu')";
-		$menu_link_data = array(
-        ":m_title" => $menu_link_data["title"],
-        ":path" => $page_path,
-        ":menu_name" => "menu-main-menu",
-        ":plid" => $menu_link_data["parent"]["mlid"] ? $menu_link_data["parent"]["mlid"] : null,
-        ":placement" => $menu_link_data["placement"],
-      );
 		return $this->query($sql2, $menu_link_data);
 	}
 

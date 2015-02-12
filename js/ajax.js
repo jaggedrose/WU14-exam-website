@@ -75,9 +75,8 @@ function saveMenu() {
 	var menuLinkData = {};
 	menuLinkData[":m_title"] = $("#menuTitle").val();
 	menuLinkData[":placement"] = $("#menuPlacement").val();
-	menuLinkData["parent"] = $('.menuLinksList select').find(":selected").data("menuItem");
-	console.log(menuLinkData);
-
+	menuLinkData[":plid"] = $("#menuLinkSelect").val();
+	
 	$.ajax ({
 		url: "php/save_page_content.php",
 		type: "post",
