@@ -40,11 +40,51 @@ function printPageForEdit(data) {
 // JS to build menus
 // 
 
-function makeAdminMenuList(data) {
-	console.log("makeAdminMenuList success: ", data);
+function makeMenuTree(menuData) {
+	var menuTree = [];
+	menuData.sort(function(x,y) {
+		return x["placement"] > y["placement"];
+	});
+
+	for (var i = 0; i < menuData.length; i++) {
+		var menuItem = menuData[i];
+		if (menuItem["plid"] === null) {
+			menuItem.subItems = [];
+			menuTree.push(menuItem);
+		}
+	}
+
+	for (var j = 0; j < menuTree.length; j++) {
+		var topItem = menuTree[j];
+		for (var k = 0; k < menuData.length; k++) {
+			var subItem = menuData[k];
+			if (topItem["mlid"] === subItem["plid"]) {
+				subItem.subItems = [];
+				topItem.subItems.push(subItem);
+			}
+		}
+	}
+
+	return menuTree;
+}
+
+// Make the admin form menu <select> 
+function makeMenuListSelect(menuData) {
+	// console.log("makeMenuListSelect success: ", menuData);
+
+	var menuTree = makeMenuTree(menuData);
+	console.log("menuTree: ", menuTree);
+
+
+	
+}
+
+// Print the admin form menu <options> in the <select>
+function printMenuListOptions(data) {
+	// console.log("printMenuListOptions success: ", data);
 	// Get menu links data from DB and append to dropdown
 	for (var i = 0; i < data.length; i++) {
-		var menuLinkList = $("#menuLinksList");
+		var menuLinkList = $("#menuLinkSelect");
 		// Add menu link list to form
 		menuLinkList.append("<option>"+data[i]["title"]+"</option>");
 	}

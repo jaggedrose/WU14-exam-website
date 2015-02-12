@@ -46,7 +46,7 @@ class SqlQueries extends PDOHelper {
 	}
 
 	public function getMenuLinks() {
-		$sql = "SELECT mlid, title, placement FROM menu_links";
+		$sql = "SELECT * FROM menu_links";
 		return $this->query($sql);
 	}
 

@@ -8,8 +8,7 @@ function onDomReady() {
 
 	$("#adminForm .menuChoiceBtns").hide();
 	$("#adminForm .newMenuForm").hide();
-	// $("#adminForm .topMenuForm").hide();
-	// $("#adminForm .subMenuForm").hide();
+	$("#adminForm .menuLinksList").hide();
 	$("#adminForm #updateFormBtn").hide();
 
 
@@ -35,8 +34,10 @@ function onDomReady() {
 	$('.menuForm input[type="radio"]').click(function() {
 		if ($("#addNewMenu").is(":checked")) {
 			$(".newMenuForm").show();
+			$(".menuLinksList").show();
 		} else {
 			$(".newMenuForm").hide();
+			$(".menuLinksList").hide();
 		}
 
 		// if ($("#existingMenu").is(":checked")) {
@@ -45,9 +46,6 @@ function onDomReady() {
 		// 	$(".topMenuForm").hide();
 		// }
 
-		//whenever the user clicks add to menu, 
-		//make the menu title field required
-		// $(".addToMenu #menu_title").attr("required", $(this).is(":checked"));
 	});
 
 	// checkbox clickhandler for menu choice - to show/hide menu fields

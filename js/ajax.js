@@ -98,7 +98,7 @@ function getMenus(menuData) {
 		data: {
 			"menuData": menuData
 		},
-		success: makeAdminMenuList,
+		success: makeMenuListSelect,
 		error: function(data) {
 			console.log("getmenus error: ", data);
 		}
