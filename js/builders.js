@@ -69,24 +69,35 @@ function makeMenuTree(menuData) {
 }
 
 // Make the admin form menu <select> 
-function makeMenuListSelect(menuData) {
-	// console.log("makeMenuListSelect success: ", menuData);
-
+function makeMenuListSelect(menuData) {	
 	var menuTree = makeMenuTree(menuData);
 	console.log("menuTree: ", menuTree);
 
+	// Make the <select> for add to menu in admin form
+	var menuSelect = $('<select class="form-control" id="menuLinkSelect"/>');
+	// add an empty top option to the select
+	var topLevel = $('<option value="">Top Menus</option>');
+	// All menu links are from the same hardcoded menu (menu-main-menu)
+	topLevel.data("menuItem", {mlid: null, menu:"menu-main-menu"});
+	menuSelect.append(topLevel);
 
-	
+	// And append to the admin form
+	$("#adminForm .menuLinksList").html(menuSelect);
+	printMenuListOptions(menuSelect, menuTree);
 }
 
 // Print the admin form menu <options> in the <select>
-function printMenuListOptions(data) {
-	// console.log("printMenuListOptions success: ", data);
+function printMenuListOptions(menuSelect, menuTree) {
+	console.log("printMenuListOptions success: ", menuTree);
 	// Get menu links data from DB and append to dropdown
-	for (var i = 0; i < data.length; i++) {
-		var menuLinkList = $("#menuLinkSelect");
-		// Add menu link list to form
-		menuLinkList.append("<option>"+data[i]["title"]+"</option>");
-	}
+	// for (var i = 0; i < menuData.length; i++) {
+	// 	var menuLinkList = $("#menuLinkSelect");
+	// 	// Add menu link list to form
+	// 	menuLinkList.append("<option>"+menuData[i]["title"]+"</option>");
+	// }
+	menuTree.forEach(function(topItem) {
+		topItem = [];
+		console.log(topItem);
+	});
 }
 
