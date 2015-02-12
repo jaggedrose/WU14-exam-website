@@ -76,7 +76,9 @@ function makeMenuListSelect(menuData) {
 	// Make the <select> for add to menu in admin form
 	var menuSelect = $('<select class="form-control" id="menuLinkSelect"/>');
 	// add an empty top option to the select
-	var topLevel = $('<option value="" disabled>Top Menus</option>');
+	var topLevel = $('<option value="">Top Menu</option>');
+	// Assume all menu links are from the same menu (menu-main-menu)
+	topLevel.data("menuItem", {mlid: null, menu:"menu-main-menu"});
 	menuSelect.append(topLevel);
 
 	// And append to the admin form

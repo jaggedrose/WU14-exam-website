@@ -6,7 +6,7 @@ function onDomReady() {
 
 	pushPopListeners();
 
-	$("#adminForm .menuChoiceBtns").hide();
+	// $("#adminForm .menuChoiceBtns").hide();
 	$("#adminForm .newMenuForm").hide();
 	$("#adminForm .menuLinksList").hide();
 	$("#adminForm #updateFormBtn").hide();
@@ -18,35 +18,37 @@ function onDomReady() {
 	});
 
 
-	// checkbox clickhandler for admin form - to show/hide menu fields
-	$('.menuForm input[type="checkbox"]').click(function() {
-		if ($(this).is(":checked")) {
-			$(".menuChoiceBtns").fadeIn(300);
-		} else {
-			$('.menuForm input[type="radio"]').removeAttr("checked");
-			$(".newMenuForm").fadeOut(300);
-			// $(".topMenuForm").fadeOut(300);
-			$(".menuChoiceBtns").fadeOut(700);
-		}
-	});
+	// // checkbox clickhandler for admin form - to show/hide menu fields
+	// $('.menuForm input[type="checkbox"]').click(function() {
+	// 	if ($(this).is(":checked")) {
+	// 		$(".menuChoiceBtns").fadeIn(300);
+	// 	} else {
+	// 		$('.menuForm input[type="radio"]').removeAttr("checked");
+	// 		$(".newMenuForm").fadeOut(300);
+	// 		// $(".topMenuForm").fadeOut(300);
+	// 		$(".menuChoiceBtns").fadeOut(700);
+	// 	}
+	// });
 
-	// Radio clickhandler for admin form - to show/hide menu fields
-	$('.menuForm input[type="radio"]').click(function() {
-		if ($("#addNewMenu").is(":checked")) {
-			$(".newMenuForm").show();
-			$(".menuLinksList").show();
-		} else {
-			$(".newMenuForm").hide();
-			$(".menuLinksList").hide();
-		}
-	});
+	// // Radio clickhandler for admin form - to show/hide menu fields
+	// $('.menuForm input[type="radio"]').click(function() {
+	// 	if ($("#addNewMenu").is(":checked")) {
+	// 		$(".newMenuForm").show();
+	// 		$(".menuLinksList").show();
+	// 	} else {
+	// 		$(".newMenuForm").hide();
+	// 		$(".menuLinksList").hide();
+	// 	}
+	// });
 
 	// checkbox clickhandler for menu choice - to show/hide menu fields
 	$('.menuForm input[type="checkbox"]').click(function() {
 		if ($(this).is(":checked")) {
-			$(".menuChoiceBtns").fadeIn(300);
+			$(".newMenuForm").fadeIn(300);
+			$(".menuLinksList").fadeIn(300);
 		} else {
-			$(".menuChoiceBtns").fadeOut(300);
+			$(".newMenuForm").fadeOut(300);
+			$(".menuLinksList").fadeOut(300);
 		}
 	});
 
