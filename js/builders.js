@@ -93,7 +93,7 @@ function printMenuListOptions(menuSelect, menuTree) {
 	for (var i = 0; i < menuTree.length; i++) {
 		var menuLinkList = $("#menuLinkSelect");
 		// Add menu link list to form
-		menuLinkList.append("<option>"+menuTree[i]["title"]+"</option>");
+		menuLinkList.append('<option value="'+menuTree[i]["mlid"]+'">'+menuTree[i]["title"]+'</option>');
 	}
 }
 

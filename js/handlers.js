@@ -14,7 +14,7 @@ function onDomReady() {
 
 	// admin button clickhandler - to show/hide admin page
 	$('#adminLogin').click(function() {
-		$("#myAdminPageMenu").fadeIn(300);
+		$("#adminForm #myAdminPageMenu").fadeIn(300);
 	});
 
 
@@ -44,17 +44,19 @@ function onDomReady() {
 	// checkbox clickhandler for menu choice - to show/hide menu fields
 	$('.menuForm input[type="checkbox"]').click(function() {
 		if ($(this).is(":checked")) {
-			$(".newMenuForm").fadeIn(300);
-			$(".menuLinksList").fadeIn(300);
+			$("#adminForm .newMenuForm").fadeIn(300);
+			$("#adminForm .menuLinksList").fadeIn(300);
 		} else {
-			$(".newMenuForm").fadeOut(300);
-			$(".menuLinksList").fadeOut(300);
+			$("#adminForm .newMenuForm").fadeOut(300);
+			$("#adminForm .menuLinksList").fadeOut(300);
 		}
+		// If the user clicks add page to menu, make the menu title field required
+		$(".menuForm #menuTitle").attr("required", $(this).is(":checked"));
 	});
 
 	
 	// Clickhandler for admin form - Save new page
-	$("#adminFormBtn").click(function() {
+	$("#adminForm #adminFormBtn").click(function() {
 
 		var pageData = {};
 		pageData[":title"] = $("#pageTitle").val();
@@ -70,7 +72,7 @@ function onDomReady() {
 
 		
 	// Clickhandler for admin form - Update page
-	$("#updateFormBtn").click(function() {
+	$("#adminForm #updateFormBtn").click(function() {
 
 		var updateData = {};
 		updateData[":title"] = $("#pageTitle").val();

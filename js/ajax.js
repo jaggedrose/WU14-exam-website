@@ -59,8 +59,10 @@ function saveNewPage(pageData) {
 			"page_data": pageData
 		},
 		success: function(data) {
-			saveMenu();
 			console.log("saveNewPage success: ", data);
+			if ($('.menuForm input[type="checkbox"]').is(":checked")) {
+				saveMenu();
+			}
 		},
 		error: function(data) {
 			console.log("saveNewPage error: ", data);
@@ -73,6 +75,8 @@ function saveMenu() {
 	var menuLinkData = {};
 	menuLinkData[":m_title"] = $("#menuTitle").val();
 	menuLinkData[":placement"] = $("#menuPlacement").val();
+	menuLinkData["parent"] = $('.menuLinksList select').find(":selected").data("menuItem");
+	console.log(menuLinkData);
 
 	$.ajax ({
 		url: "php/save_page_content.php",
