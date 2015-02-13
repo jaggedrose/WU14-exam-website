@@ -21,15 +21,15 @@ class SqlQueries extends PDOHelper {
 		// Get pid from the array we got back
 		$last_pid = $last_pid[0]["pid"];
 
-		$page_path = "pageid=".$last_pid;
-
-		$sql2 = "INSERT INTO menu_links (title, placement, plid, path, menu) VALUES (:m_title, :placement, :plid, '$page_path', 'menu-main-menu')";
+		// $page_path = "pageid=".$last_pid;
+		// TODO - Changed $page_path to $last_pid, not using "pageid=" string for now
+		$sql2 = "INSERT INTO menu_links (title, placement, plid, path, menu) VALUES (:m_title, :placement, :plid, '$last_pid', 'menu-main-menu')";
 		return $this->query($sql2, $menu_link_data);
 	}
 
 	public function getChosenPage($chosen_page) {
 		$this_page = array(":pid" => $chosen_page);
-		$sql ="SELECT pid, title, body FROM pages WHERE pid = :pid";
+		$sql ="SELECT * FROM pages WHERE pid = :pid";
 		$this_page_data = $this->query($sql, $this_page);
 
 		return $this_page_data;
