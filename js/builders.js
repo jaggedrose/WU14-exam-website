@@ -2,7 +2,7 @@
 // JS to build pages
 
 function printPagesList(data) {
-	console.log("printPagesList success: ", data);
+	// console.log("printPagesList success: ", data);
 	$("#pageList table tr").not(".pageListHeader").remove();
 	// Get page data from DB and append to pageList
 	for (var i = 0; i < data.length; i++) {
@@ -28,7 +28,7 @@ function printPagesList(data) {
 }
 
 function printPageForEdit(data) {
-	console.log("printPageForEdit success: ", data);
+	// console.log("printPageForEdit success: ", data);
 	
 	$("#pageTitle").val(data[0]["title"]);
 	$("#pageContent").val(data[0]["body"]);
@@ -97,11 +97,11 @@ function printMainMenu(mainMenuUl, menuTree) {
 			menuLink = $('<li><a href="'+menuTree[i]["path"]+'">'+menuTree[i]["title"]+'</a></li>');
 		} else {
 			//  First make the <li><a></a></li>
-			menuLink = $('<li class="dropdown"><a href="'+menuTree[i].subItems["path"]+'">'+menuTree[i].subItems["title"]+'</a></li>');
+			menuLink = $('<li class="dropdown"><a href="'+menuTree[i]["path"]+'">'+menuTree[i]["title"]+'</a></li>');
 			//  Then make then sub menu dropdown
 			var newDropdown = $('<ul class="dropdown-menu"/>');
 			// Add dropdown to menuLink
-			menuLink.append(newDropdown);
+			menuLink.prepend(newDropdown);
 			// Recall this function to append sub menus menuLinks to the dropdpwn
 			printMainMenu(newDropdown, menuTree[i].subItems);
 		}
@@ -131,7 +131,7 @@ function makeMenuListSelect(menuData) {
 
 // Print the admin form menu <options> in the <select>
 function printMenuListOptions(menuSelect, menuTree) {
-	console.log("printMenuListOptions success: ", menuTree);
+	// console.log("printMenuListOptions success: ", menuTree);
 	// Get menu links data from DB and append to dropdown
 	for (var i = 0; i < menuTree.length; i++) {
 		var menuLinkList = $("#menuLinkSelect");
