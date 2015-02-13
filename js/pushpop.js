@@ -50,13 +50,15 @@ function pushPopListeners() {
   function showSection(pageName) {
     console.log("showSection: ", pageName);
 
+    // Show chosen page
+
     // If page list is chosen, get data with Ajax
     if (pageName == "page-list") {
       $("#myAdminPageMenu").show();
       $("#pageList").fadeIn(300);
     }
 
-    // If page list is chosen, get data with Ajax
+    // If admin form is chosen, get data with Ajax
     if (pageName == "admin-form") {
       $("#myAdminPageMenu").show();
       $("#adminForm").fadeIn(300);

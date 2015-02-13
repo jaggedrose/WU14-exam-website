@@ -2,6 +2,10 @@
 // JS to build pages
 // 
 
+function printChosenPage(data) {
+	console.log("printChosenPage success: ", data);
+}
+
 function printPagesList(data) {
 	// console.log("printPagesList success: ", data);
 	$("#pageList table tr").not(".pageListHeader").remove();

@@ -2,6 +2,21 @@
 // AJAX call functions
 // 
 
+function getChosenPage(href) {
+	$.ajax ({
+		url: "php/get_page_content.php",
+		type: "get",
+		dataType: "json",
+		data: {
+			"chosen_page": href
+		},
+		success: printChosenPage,
+		error: function(data) {
+			console.log("getPageForEdit error: ", data);
+		}
+	});
+}
+
 function getPagesList(searchParam) {
 	$.ajax ({
 		url: "php/get_page_content.php",
@@ -99,7 +114,7 @@ function getMenus(menuData) {
 		type: "get",
 		dataType: "json",
 		data: {
-			"menuData": menuData
+			"menu_data": menuData
 		},
 		success: function(data) {
 			makeMenuListSelect(data);
