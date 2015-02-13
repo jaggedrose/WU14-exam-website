@@ -68,23 +68,66 @@ function makeMenuTree(menuData) {
 	return menuTree;
 }
 
+
+// Make main menu in navbar
+function makeMainMenu(menuData) {
+	var menuTree = makeMenuTree(menuData);
+
+	var mainMenuUl = $('<ul class="nav navbar-nav" id="mainMenu"/>');
+	// Add home link 
+	var menuHome = $('<li><a href="index.html" class="glyphicon glyphicon-home"></a></li>');
+	// Prepend to navbar
+	mainMenuUl.prepend(menuHome);
+	// Remove old .navbar first & then replace with new html
+	$("header .navbar-collapse").find("#mainMenu").remove();
+	$("header .navbar-collapse").html(mainMenuUl);
+	printMainMenu(mainMenuUl, menuTree);
+}
+
+
+function printMainMenu(mainMenuUl, menuTree) {
+	console.log("printMainMenu success: ", menuTree);
+	// Loop through menuTree to get top menu links
+	for (var i = 0; i < menuTree.length; i++) {
+		// Make a new <li>
+		var menuLink;
+		// var menuLink;
+		if (menuTree[i].subItems.length === 0) {
+			// If top menu has no sub menus, just make a link
+			menuLink = $('<li><a href="'+menuTree[i]["path"]+'">'+menuTree[i]["title"]+'</a></li>');
+		} else {
+			//  First make the <li><a></a></li>
+			menuLink = $('<li class="dropdown"><a href="'+menuTree[i].subItems["path"]+'">'+menuTree[i].subItems["title"]+'</a></li>');
+			//  Then make then sub menu dropdown
+			var newDropdown = $('<ul class="dropdown-menu"/>');
+			// Add dropdown to menuLink
+			menuLink.append(newDropdown);
+			// Recall this function to append sub menus menuLinks to the dropdpwn
+			printMainMenu(newDropdown, menuTree[i].subItems);
+		}
+		// And append to html
+		mainMenuUl.append(menuLink);
+	}
+	return mainMenuUl;
+}
+
 // Make the admin form menu <select> 
 function makeMenuListSelect(menuData) {
 	var menuTree = makeMenuTree(menuData);
-	console.log("menuTree: ", menuTree);
-
+	
 	// Make the <select> for add to menu in admin form
 	var menuSelect = $('<select class="form-control" id="menuLinkSelect"/>');
 	// add an empty top option to the select
-	var topLevel = $('<option value="">Top Menu</option>');
+	var topMenu = $('<option value="">Top Menu</option>');
 	// Assume all menu links are from the same menu (menu-main-menu)
-	topLevel.data("menuItem", {mlid: null, menu:"menu-main-menu"});
-	menuSelect.append(topLevel);
+	topMenu.data("menuItem", {mlid: null, menu:"menu-main-menu"});
+	menuSelect.append(topMenu);
 
 	// And append to the admin form
 	$("#adminForm .menuLinksList").html(menuSelect);
 	printMenuListOptions(menuSelect, menuTree);
 }
+
 
 // Print the admin form menu <options> in the <select>
 function printMenuListOptions(menuSelect, menuTree) {
@@ -96,4 +139,3 @@ function printMenuListOptions(menuSelect, menuTree) {
 		menuLinkList.append('<option value="'+menuTree[i]["mlid"]+'">'+menuTree[i]["title"]+'</option>');
 	}
 }
-

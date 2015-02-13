@@ -101,7 +101,10 @@ function getMenus(menuData) {
 		data: {
 			"menuData": menuData
 		},
-		success: makeMenuListSelect,
+		success: function(data) {
+			makeMenuListSelect(data);
+			makeMainMenu(data);
+		},
 		error: function(data) {
 			console.log("getmenus error: ", data);
 		}
