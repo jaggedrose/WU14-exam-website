@@ -4,7 +4,17 @@
 
 function printChosenPage(data) {
 	console.log("printChosenPage success: ", data);
+	// Empty section, just to be safe
+  $("#thisPage").html("");
+  // Build html for page, first the article tag
+  var pageContent = $('<article class="pageContent"/>');
+  // And then a headline tag for the title -
+  pageContent.append("<h2>"+data[0]["title"]+"</h2>");
+  pageContent.append(data[0]["body"]);
+  // Print page content
+  $("#thisPage").html(pageContent);
 }
+
 
 function printPagesList(data) {
 	// console.log("printPagesList success: ", data);
@@ -31,6 +41,7 @@ function printPagesList(data) {
 
 	});
 }
+
 
 function printPageForEdit(data) {
 	// console.log("printPageForEdit success: ", data);

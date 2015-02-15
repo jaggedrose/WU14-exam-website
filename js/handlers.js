@@ -6,6 +6,7 @@ function onDomReady() {
 
 	pushPopListeners();
 
+	
 	// $("#adminForm .menuChoiceBtns").hide();
 	$("#adminForm .newMenuForm").hide();
 	$("#adminForm .menuLinksList").hide();

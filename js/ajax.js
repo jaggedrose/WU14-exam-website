@@ -12,7 +12,7 @@ function getChosenPage(href) {
 		},
 		success: printChosenPage,
 		error: function(data) {
-			console.log("getPageForEdit error: ", data);
+			console.log("getChosenPage error: ", data);
 		}
 	});
 }

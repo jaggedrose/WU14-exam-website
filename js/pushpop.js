@@ -53,15 +53,21 @@ function pushPopListeners() {
     // Show chosen page
 
     // If page list is chosen, get data with Ajax
+    // Elseif admin form is chosen, get data with Ajax
+    // Else get chosen page
     if (pageName == "page-list") {
       $("#myAdminPageMenu").show();
       $("#pageList").fadeIn(300);
     }
-
-    // If admin form is chosen, get data with Ajax
-    if (pageName == "admin-form") {
+    else if (pageName == "admin-form") {
       $("#myAdminPageMenu").show();
       $("#adminForm").fadeIn(300);
+    }
+    else {
+      getChosenPage(pageName);
+
+      pageName = "page";
+       $("#thisPage").fadeIn(300);
     }
     
     $(".nav li").removeClass("active");
