@@ -7,7 +7,7 @@ function onDomReady() {
 	pushPopListeners();
 
 	
-	// $("#adminForm .menuChoiceBtns").hide();
+	$("#thisPage").hide();
 	$("#adminForm .newMenuForm").hide();
 	$("#adminForm .menuLinksList").hide();
 	$("#adminForm #updateFormBtn").hide();
@@ -16,6 +16,7 @@ function onDomReady() {
 	// admin button clickhandler - to show/hide admin page
 	$('#adminLogin').click(function() {
 		$("#myAdminPageMenu").fadeIn(300);
+		$("#thisPage").hide();
 	});
 
 

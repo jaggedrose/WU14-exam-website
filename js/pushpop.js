@@ -19,8 +19,7 @@ function pushPopListeners() {
     }
 
     $("main .row").children().hide();
-    $('section#'+$(this).attr("href")).show();
-
+    
     history.pushState(null,null,$(this).attr("href"));
     showSection($(this).attr("href"));
     event.preventDefault();
@@ -42,7 +41,6 @@ function pushPopListeners() {
     console.log("pageName: ", pageName);
 
     $("main .row").children().hide();
-    $('section#'+pageName).show();
     // and showSection
     showSection(pageName);
   }
@@ -50,9 +48,7 @@ function pushPopListeners() {
   function showSection(pageName) {
     console.log("showSection: ", pageName);
 
-    // Show chosen page
-
-    // If page list is chosen, get data with Ajax
+        // If page list is chosen, get data with Ajax
     // Elseif admin form is chosen, get data with Ajax
     // Else get chosen page
     if (pageName == "page-list") {
