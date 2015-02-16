@@ -1,14 +1,24 @@
-body {
+html, body {
 	background-image: url('../imgs/bckgrdhome.jpg');
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-attachment: fixed;
-	/*font-family: 'Gentium Basic', serif;*/
+	font-family: 'Gentium Basic', serif;
+	/*font-size: 20px;*/
 	height: 100%;
 }
 
 main {
-  padding-top: 70px;
+  padding-top: 120px;
+}
+
+header nav {
+	height: 80px;
+	font-size: 30px;
+}
+
+header nav li:hover > ul {
+	display: block;
 }
 
 .jumbotron {
