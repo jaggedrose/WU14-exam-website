@@ -8,6 +8,7 @@ function makeMenuTree(menuData) {
 		return x["placement"] > y["placement"];
 	});
 
+	// i = top menu
 	for (var i = 0; i < menuData.length; i++) {
 		var menuItem = menuData[i];
 		if (menuItem["plid"] === null) {
@@ -15,7 +16,7 @@ function makeMenuTree(menuData) {
 			menuTree.push(menuItem);
 		}
 	}
-
+	// j = top menu, k = sub menu
 	for (var j = 0; j < menuTree.length; j++) {
 		var topItem = menuTree[j];
 		for (var k = 0; k < menuData.length; k++) {
@@ -26,6 +27,22 @@ function makeMenuTree(menuData) {
 			}
 		}
 	}
+
+	// l = top menu, m = sub menu , n = sub sub menu 
+	for (var l = 0; l < menuTree.length; l++) {
+		var topItem2 = menuTree[l];
+		for (var m = 0; m < topItem2.subItems.length; m++) {
+			var subItem2 = topItem2.subItems[m];
+			for (var n = 0; n < menuData.length; n++) {
+				var subSubItem = menuData[n];
+				if (subItem2["mlid"] === subSubItem["plid"]) {
+					subSubItem.subItems = [];
+					subItem2.subItems.push(subSubItem);
+				}
+			}
+		}
+	}
+
 	return menuTree;
 }
 
@@ -93,10 +110,16 @@ function makeMenuListSelect(menuData) {
 // Print the admin form menu <options> in the <select>
 function printMenuListOptions(menuSelect, menuTree) {
 	// console.log("printMenuListOptions success: ", menuTree);
+	var menuLinkList = $("#menuLinkSelect");
 	// Get menu links data from DB and append to dropdown
 	for (var i = 0; i < menuTree.length; i++) {
-		var menuLinkList = $("#menuLinkSelect");
 		// Add menu link list to form
 		menuLinkList.append('<option value="'+menuTree[i]["mlid"]+'">'+menuTree[i]["title"]+'</option>');
+
+		for (var j = 0; j < menuTree[i].subItems.length; j++) {
+			var subMenu = menuTree[i].subItems[j];
+			menuLinkList.append('<option value="'+subMenu["mlid"]+'">-> '+subMenu["title"]+'</option>');
+		}
+
 	}
 }
