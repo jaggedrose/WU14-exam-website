@@ -125,6 +125,23 @@ function saveFooter(footerData) {
 	});
 }
 
+function getFooter(footerData) {
+	$.ajax ({
+		url: "php/get_footer_content.php",
+		type: "get",
+		dataType: "json",
+		data: {
+			"footer_data": footerData
+		},
+		success:function(data) {
+			console.log("getFooter success: ", data);
+		},
+		error: function(data) {
+			console.log("getFooter error: ", data);
+		}
+	});
+}
+
 function getMenus(menuData, pageName) {
 	$.ajax ({
 		url: "php/get_menu_content.php",

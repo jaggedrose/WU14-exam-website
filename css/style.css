@@ -29,3 +29,7 @@ header nav li:hover > ul {
 	z-index: 10;
 	background-color: #fff;
 }
+
+footer nav {
+	height: 60px;
+}

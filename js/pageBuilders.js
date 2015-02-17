@@ -51,3 +51,9 @@ function printPageForEdit(data) {
 	$("#updateFormBtn").prop('value', data[0]["pid"]);
 }
 
+function printFooter(data) {
+	console.log("printFooter success: ", data);
+	
+
+}
+

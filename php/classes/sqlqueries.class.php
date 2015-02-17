@@ -32,18 +32,19 @@ class SqlQueries extends PDOHelper {
 		return $this->query($sql, $footer_data);
 	}
 
+	public function updatePage($update_data) {
+		$sql = "UPDATE pages SET title=:title, body=:body WHERE pid = :pid";
+		return $this->query($sql, $update_data);
+	}
+
+
 	public function getChosenPage($chosen_page) {
 		$this_page = array(":pid" => $chosen_page);
 		$sql ="SELECT * FROM pages WHERE pid = :pid";
 		$this_page_data = $this->query($sql, $this_page);
 
 		return $this_page_data;
-	}
-
-	public function updatePage($update_data) {
-		$sql = "UPDATE pages SET title=:title, body=:body WHERE pid = :pid";
-		return $this->query($sql, $update_data);
-	}
+	}	
 
 	public function getPagesList() {
 		$sql = "SELECT pages.pid, pages.title, pages.body, pages.created, CONCAT(users.fname, ' ', users.lname) as author FROM pages, users";
@@ -52,6 +53,11 @@ class SqlQueries extends PDOHelper {
 
 	public function getMenuLinks() {
 		$sql = "SELECT * FROM menu_links";
+		return $this->query($sql);
+	}
+
+	public function getFooterText() {
+		$sql = "SELECT * FROM footer";
 		return $this->query($sql);
 	}
 

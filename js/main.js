@@ -9,5 +9,6 @@ $(function() {
 	// Call needed functions
 	onDomReady();
 	getPagesList();
+	getFooter();
 
 });
