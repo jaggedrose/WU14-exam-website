@@ -58,7 +58,7 @@ function updatePage(updateData) {
 		success: function(data) {
 			// saveMenu();
 			console.log("updatePage success: ", data);
-			$("#adminForm")[0].reset();
+			// $("#adminForm")[0].reset();
 		},
 		error: function(data) {
 			console.log("updatePage error: ", data);
