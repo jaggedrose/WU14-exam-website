@@ -56,7 +56,6 @@ function updatePage(updateData) {
 			"update_data": updateData
 		},
 		success: function(data) {
-			// saveMenu();
 			console.log("updatePage success: ", data);
 			// $("#adminForm")[0].reset();
 		},
@@ -78,8 +77,6 @@ function saveNewPage(pageData) {
 			console.log("saveNewPage success: ", data);
 			if ($('.menuForm input[type="checkbox"]').is(":checked")) {
 				saveMenu();
-			} else {
-				//$("#adminForm")[0].reset();
 			}
 		},
 		error: function(data) {
@@ -113,7 +110,7 @@ function saveMenu() {
 
 function saveFooter(footerData) {
 	$.ajax ({
-		url: "php/save_page_content",
+		url: "php/save_page_content.php",
 		type: "post",
 		dataType: "json",
 		data: {
@@ -142,7 +139,7 @@ function getMenus(menuData, pageName) {
 
 			$(".nav li").removeClass("active");
 			// Find any links in body pointing to the pageUrl,
-			console.log("found: ",$("body").find('a[href="'+pageName+'"]').length);
+			// console.log("found: ",$("body").find('a[href="'+pageName+'"]').length);
 			$("body").find('a[href="'+pageName+'"]').each(function() {
 				// and add .active to my parent if it is an li tag
 				$(this).parent("li").addClass("active");

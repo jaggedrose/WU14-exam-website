@@ -10,8 +10,8 @@ class SqlQueries extends PDOHelper {
 		// );
 
 		//$sql1 = "INSERT INTO pages (title, body, user_id) VALUES (" . $page_data["title"]."," . $page_data["body"].",1)";
-		$sql1 = "INSERT INTO pages (title, body, user_id) VALUES (:title, :body, 1)";
-		return $this->query($sql1, $page_data);
+		$sql = "INSERT INTO pages (title, body, user_id) VALUES (:title, :body, 1)";
+		return $this->query($sql, $page_data);
 	}
 
 	public function saveMenuLink($menu_link_data) {
@@ -27,8 +27,8 @@ class SqlQueries extends PDOHelper {
 		return $this->query($sql2, $menu_link_data);
 	}
 
-	public function saveFooter($footer_data) {
-		$sql = "INSERT INTO footer (title, company, street, postalcode, city, country, email) VALUES (:f_title, :company, :street, :postalcode, :city, :country, :email)";
+	public function saveNewFooter($footer_data) {
+		$sql = "INSERT INTO footer (title, company, street, postalcode, city, email) VALUES (:f_title, :company, :street, :postalcode, :city, :email)";
 		return $this->query($sql, $footer_data);
 	}
 

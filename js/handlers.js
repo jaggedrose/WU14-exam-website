@@ -41,7 +41,7 @@ function onDomReady() {
 		console.log("edit: ", $(this).data("edit"));
 		//$("#adminForm").submit();
 
-		//return false;
+		// return false;
 	});
 
 		// Clickhandler for admin form - Update page
@@ -49,10 +49,9 @@ function onDomReady() {
 		edit = true;
 		//$("#adminForm").submit();
 
-		// Empty the form once we're done with the information in it
-		// $("#adminForm").reset();
+		
 
-		//return false;
+		// return false;
 	});
 
 
@@ -63,6 +62,7 @@ function onDomReady() {
 			pageData[":body"] = $("#pageContent").val();
 
 			saveNewPage(pageData);
+			console.log(saveNewPage);
 		} else {
 			var updateData = {};
 			updateData[":title"] = $("#pageTitle").val();
@@ -77,16 +77,15 @@ function onDomReady() {
 	});
 		
 
-	// Clickhandler for admin form - Save new page
-	$("#footerForm #footerFormBtn").submit(function() {
+	// Clickhandler for footer form
+	$("#footerForm").submit(function() {
 
 		var footerData = {};
 		footerData[":f_title"] = $("#footerTitle").val();
-		footerData[":company"] = $("#footerCompanyName").val();
+		footerData[":company"] = $("#footerCompany").val();
 		footerData[":street"] = $("#footerStreet").val();
-		footerData[":postalcode"] = $("#footerPostalcode").val();
+		footerData[":postalcode"] = $("#footerPostal").val();
 		footerData[":city"] = $("#footerCity").val();
-		footerData["country"] = $("#footerCountry").val();
 		footerData[":email"] = $("#footerEmail").val();
 
 		saveFooter(footerData);
