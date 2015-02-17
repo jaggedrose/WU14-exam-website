@@ -58,6 +58,7 @@ function updatePage(updateData) {
 		success: function(data) {
 			// saveMenu();
 			console.log("updatePage success: ", data);
+			$("#adminForm")[0].reset();
 		},
 		error: function(data) {
 			console.log("updatePage error: ", data);
@@ -77,6 +78,8 @@ function saveNewPage(pageData) {
 			console.log("saveNewPage success: ", data);
 			if ($('.menuForm input[type="checkbox"]').is(":checked")) {
 				saveMenu();
+			} else {
+				//$("#adminForm")[0].reset();
 			}
 		},
 		error: function(data) {
@@ -85,7 +88,6 @@ function saveNewPage(pageData) {
 	});
 }
 
-// ToDo - if new menu link save all else just save page & path???
 function saveMenu() {
 	var menuLinkData = {};
 	menuLinkData[":m_title"] = $("#menuTitle").val();
@@ -101,6 +103,7 @@ function saveMenu() {
 		},
 		success: function(data) {
 			console.log("saveMenu success: ", data);
+			// $("#adminForm")[0].reset();
 		},
 		error: function(data) {
 			console.log("saveMenu error: ", data);
@@ -108,7 +111,24 @@ function saveMenu() {
 	});
 }
 
-function getMenus(menuData) {
+function saveFooter(footerData) {
+	$.ajax ({
+		url: "php/save_page_content",
+		type: "post",
+		dataType: "json",
+		data: {
+			"footer_data": footerData
+		},
+		success:function(data) {
+			console.log("saveFooter success: ", data);
+		},
+		error: function(data) {
+			console.log("saveFooter error: ", data);
+		}
+	});
+}
+
+function getMenus(menuData, pageName) {
 	$.ajax ({
 		url: "php/get_menu_content.php",
 		type: "get",
@@ -119,6 +139,14 @@ function getMenus(menuData) {
 		success: function(data) {
 			makeMenuListSelect(data);
 			makeMainMenu(data);
+
+			$(".nav li").removeClass("active");
+			// Find any links in body pointing to the pageUrl,
+			console.log("found: ",$("body").find('a[href="'+pageName+'"]').length);
+			$("body").find('a[href="'+pageName+'"]').each(function() {
+				// and add .active to my parent if it is an li tag
+				$(this).parent("li").addClass("active");
+			});
 		},
 		error: function(data) {
 			console.log("getmenus error: ", data);

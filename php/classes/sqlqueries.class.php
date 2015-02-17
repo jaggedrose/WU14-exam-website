@@ -29,7 +29,7 @@ class SqlQueries extends PDOHelper {
 
 	public function saveFooter($footer_data) {
 		$sql = "INSERT INTO footer (title, company, street, postalcode, city, country, email) VALUES (:f_title, :company, :street, :postalcode, :city, :country, :email)";
-		return $this->query($sql, $footer_data)
+		return $this->query($sql, $footer_data);
 	}
 
 	public function getChosenPage($chosen_page) {

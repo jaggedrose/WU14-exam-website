@@ -8,7 +8,6 @@ $(function() {
 	
 	// Call needed functions
 	onDomReady();
-	getMenus();
 	getPagesList();
 
 });

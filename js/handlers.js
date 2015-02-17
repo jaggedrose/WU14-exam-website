@@ -36,33 +36,57 @@ function onDomReady() {
 	
 	// Clickhandler for admin form - Save new page
 	$("#adminForm #adminFormBtn").click(function() {
+		$("#adminForm").data("edit", false);
+		//$("#adminForm").submit();
 
-		var pageData = {};
-		pageData[":title"] = $("#pageTitle").val();
-		pageData[":body"] = $("#pageContent").val();
+		//return false;
+	});
 
-		saveNewPage(pageData);
+	$("#adminForm").submit(function() {
+		if ( !$(this).data("edit") ) {
+			var pageData = {};
+			pageData[":title"] = $("#pageTitle").val();
+			pageData[":body"] = $("#pageContent").val();
 
-		// Empty the form once we're done with the information in it
-		// $("#adminForm").reset();
+			saveNewPage(pageData);
+		} else {
+			var updateData = {};
+			updateData[":title"] = $("#pageTitle").val();
+			updateData[":body"] = $("#pageContent").val();
+			updateData[":pid"] = $("#updateFormBtn").val();
+
+			console.log(updateData);
+			updatePage(updateData);
+		}
 
 		return false;
 	});
-
 		
 	// Clickhandler for admin form - Update page
 	$("#adminForm #updateFormBtn").click(function() {
-
-		var updateData = {};
-		updateData[":title"] = $("#pageTitle").val();
-		updateData[":body"] = $("#pageContent").val();
-		updateData[":pid"] = $("#updateFormBtn").val();
-
-		console.log(updateData);
-		updatePage(updateData);
+		$("#adminForm").data("edit", true);
+		//$("#adminForm").submit();
 
 		// Empty the form once we're done with the information in it
 		// $("#adminForm").reset();
+
+		//return false;
+	});
+
+	// Clickhandler for admin form - Save new page
+	$("#footerForm #footerFormBtn").submit(function() {
+
+		var footerData = {};
+		footerData[":f_title"] = $("#footerTitle").val();
+		footerData[":company"] = $("#footerCompanyName").val();
+		footerData[":street"] = $("#footerStreet").val();
+		footerData[":postalcode"] = $("#footerPostalcode").val();
+		footerData[":city"] = $("#footerCity").val();
+		footerData["country"] = $("#footerCountry").val();
+		footerData[":email"] = $("#footerEmail").val();
+
+		saveFooter(footerData);
+		console.log(footerData);
 
 		return false;
 	});

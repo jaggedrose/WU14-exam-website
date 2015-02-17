@@ -47,7 +47,7 @@ function pushPopListeners() {
 
   function showSection(pageName) {
     console.log("showSection: ", pageName);
-
+    getMenus(undefined, pageName);
         // If page list is chosen, get data with Ajax
     // Elseif admin form is chosen, get data with Ajax
     // Else get chosen page
@@ -65,13 +65,6 @@ function pushPopListeners() {
       pageName = "page";
        $("#thisPage").fadeIn(300);
     }
-    
-    $(".nav li").removeClass("active");
-    // Find any links in body pointing to the pageUrl,
-    $("body").find('a[href="'+pageName+'"]').each(function() {
-      // and add .active to my parent if it is an li tag
-      $(this).parent("li").addClass("active");
-    });
   }
 
 
