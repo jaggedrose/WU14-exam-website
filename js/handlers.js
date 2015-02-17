@@ -36,16 +36,16 @@ function onDomReady() {
 	var edit = false;
 
 	// Clickhandler for admin form - Save new page
-	$("#adminForm #adminFormBtn").submit(function() {
+	$("#adminForm #adminFormBtn").click(function() {
 		edit = false;
-		console.log("edit: ", $(this).data("edit"));
+		// console.log("edit: ", $(this).data("edit"));
 		//$("#adminForm").submit();
 
 		// return false;
 	});
 
 		// Clickhandler for admin form - Update page
-	$("#adminForm #updateFormBtn").submit(function() {
+	$("#adminForm #updateFormBtn").click(function() {
 		edit = true;
 		//$("#adminForm").submit();
 
@@ -56,13 +56,13 @@ function onDomReady() {
 
 
 	$("#adminForm").submit(function() {
-		if (edit) {
+		if (!edit) {
 			var pageData = {};
 			pageData[":title"] = $("#pageTitle").val();
 			pageData[":body"] = $("#pageContent").val();
 
 			saveNewPage(pageData);
-			console.log(saveNewPage);
+			console.log(pageData);
 		} else {
 			var updateData = {};
 			updateData[":title"] = $("#pageTitle").val();
