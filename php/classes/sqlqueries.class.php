@@ -27,6 +27,11 @@ class SqlQueries extends PDOHelper {
 		return $this->query($sql2, $menu_link_data);
 	}
 
+	public function saveFooter($footer_data) {
+		$sql = "INSERT INTO footer (title, company, street, postalcode, city, country, email) VALUES (:f_title, :company, :street, :postalcode, :city, :country, :email)";
+		return $this->query($sql, $footer_data)
+	}
+
 	public function getChosenPage($chosen_page) {
 		$this_page = array(":pid" => $chosen_page);
 		$sql ="SELECT * FROM pages WHERE pid = :pid";

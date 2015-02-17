@@ -17,3 +17,7 @@ if (isset($_REQUEST["update_data"])) {
 if (isset($_REQUEST["menu_link_data"])) {
 	echo(json_encode($queries->saveMenuLink($_REQUEST["menu_link_data"])));
 }
+
+if (isset($_REQUEST["footer_data"])) {
+	echo(json_encode($queries->saveFooter($_REQUEST["footer_data"])));
+}
