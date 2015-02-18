@@ -54,11 +54,12 @@ function printPageForEdit(data) {
 
 function printFooter(data) {
 	console.log("printFooter success: ", data);
-	var footerText = $('<section class="navbar-left footerText"/>');
+	var footerText1 = $('<section class="navbar-text" id="footerText1"/>');
+	var footerText2 = $('<section class="navbar-text" id="footerText2"/>');
 	// And then append to footer
-	footerText.append("<h4>"+data[0]["company"]+"</h4>");
-	footerText.append("<p>"+data[0]["street"]+"</br>"+data[0]["postalcode"]+" "+data[0]["city"]+"</br>"+data[0]["email"]+"</p>");
+	footerText1.append("<h4><strong>"+data[0]["company"]+"</strong></h4><p>"+data[0]["street"]+"</br>"+data[0]["postalcode"]+" "+data[0]["city"]+"</p>");
+	footerText2.append("<h4>"+data[0]["title"]+"</h4><p>"+data[0]["email"]+"</p>");
 	// Print footer content
-	$("#footerContent").html(footerText);
+	$(".footerContent").after(footerText1, footerText2);
 }
 

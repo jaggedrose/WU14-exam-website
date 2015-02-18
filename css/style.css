@@ -5,7 +5,12 @@ html, body {
 	background-attachment: fixed;
 	font-family: 'Gentium Basic', serif;
 	/*font-size: 20px;*/
+	/*position: relative;*/
 	height: 100%;
+}
+
+body {
+	margin-bottom: 100px;
 }
 
 main {
@@ -21,20 +26,27 @@ header nav {
 	font-size: 30px;
 }
 
+header .container-fluid {
+	margin-top: 10px;
+}
+
+#mainMenu {
+	margin-top: 15px;
+}
+
 header nav li:hover > ul {
 	display: block;
 }
 
+.navbar-default {
+	background-color: #F0F9F6;
+}
+
 .jumbotron {
-	z-index: 10;
+	z-index: 3;
 	background-color: #fff;
 }
 
-footer nav {
-	height: 100px;
-}
-
-footer .footerText {
-	width: 200px;
-	margin: 10px;
+footer .navbar-text {
+	margin: 5px 15px;
 }
