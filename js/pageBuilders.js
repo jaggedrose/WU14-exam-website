@@ -5,14 +5,14 @@
 function printChosenPage(data) {
 	console.log("printChosenPage success: ", data);
 	// Empty section, just to be safe
-  $("#thisPage").html("");
-  // Build html for page, first the article tag
-  var pageContent = $('<article class="pageContent"/>');
-  // And then a headline tag for the title -
-  pageContent.append("<h2>"+data[0]["title"]+"</h2>");
-  pageContent.append(data[0]["body"]);
-  // Print page content
-  $("#thisPage").html(pageContent);
+	$("#thisPage").html("");
+	// Build html for page, first the article tag
+	var pageContent = $('<article class="pageContent"/>');
+	// And then a headline tag for the title -
+	pageContent.append("<h2>"+data[0]["title"]+"</h2>");
+	pageContent.append(data[0]["body"]);
+	// Print page content
+	$("#thisPage").html(pageContent);
 }
 
 
@@ -53,7 +53,11 @@ function printPageForEdit(data) {
 
 function printFooter(data) {
 	console.log("printFooter success: ", data);
-	
-
+	var footerContent = $('<section class="navbar-left footerContent"/>');
+	// And then append to footer
+	footerContent.append("<h4>"+data[0]["company"]+"</h4>");
+	footerContent.append("<p>"+data[0]["street"]+"</br>"+data[0]["postalcode"]+" "+data[0]["city"]+"</br>"+data[0]["email"]+"</p>");
+	// Print footer content
+	$("#footerText").html(footerContent);
 }
 

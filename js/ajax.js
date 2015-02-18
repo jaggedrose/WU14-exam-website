@@ -135,6 +135,7 @@ function getFooter(footerData) {
 		},
 		success:function(data) {
 			console.log("getFooter success: ", data);
+			printFooter(data);
 		},
 		error: function(data) {
 			console.log("getFooter error: ", data);
