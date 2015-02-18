@@ -27,7 +27,7 @@ function printPagesList(data) {
 		pageListInfo.append('<th>'+data[i]["title"]+'</th>');
 		pageListInfo.append('<td>'+data[i]["author"]+'</td>');
 		pageListInfo.append('<td>'+data[i]["created"]+'</td>');
-		pageListInfo.append('<td><button class="editPage btn btn-info btn-sm" value="'+data[i]["pid"]+'"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button> <button class="viewPage btn btn-warning btn-sm" value="'+data[i]["pid"]+'"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></button></td>');
+		pageListInfo.append('<td><button class="editPage btn btn-info btn-sm" value="'+data[i]["pid"]+'"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></td>');
 		$("#pageList table").append(pageListInfo);
 	}
 
@@ -51,13 +51,14 @@ function printPageForEdit(data) {
 	$("#updateFormBtn").prop('value', data[0]["pid"]);
 }
 
+
 function printFooter(data) {
 	console.log("printFooter success: ", data);
-	var footerContent = $('<section class="navbar-left footerContent"/>');
+	var footerText = $('<section class="navbar-left footerText"/>');
 	// And then append to footer
-	footerContent.append("<h4>"+data[0]["company"]+"</h4>");
-	footerContent.append("<p>"+data[0]["street"]+"</br>"+data[0]["postalcode"]+" "+data[0]["city"]+"</br>"+data[0]["email"]+"</p>");
+	footerText.append("<h4>"+data[0]["company"]+"</h4>");
+	footerText.append("<p>"+data[0]["street"]+"</br>"+data[0]["postalcode"]+" "+data[0]["city"]+"</br>"+data[0]["email"]+"</p>");
 	// Print footer content
-	$("#footerText").html(footerContent);
+	$("#footerContent").html(footerText);
 }
 
