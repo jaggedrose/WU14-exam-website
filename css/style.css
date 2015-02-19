@@ -23,7 +23,7 @@ nav, h1, h2, h3, h4, h5, h6{
 
 header nav {
 	height: 80px;
-	font-size: 23px;
+	font-size: 25px;
 }
 
 .navbar-default {
@@ -31,7 +31,7 @@ header nav {
 }
 
 header .container-fluid {
-	margin-top: 10px;
+	margin-top: 13px;
 }
 
 #mainMenu {
@@ -40,6 +40,28 @@ header .container-fluid {
 
 header nav li:hover > ul {
 	display: block;
+}
+
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus {
+	background-color: #E0F2EC;
+}
+
+.dropdown-menu > .active > a, 
+.dropdown-menu > .active > a:hover,
+.dropdown-menu > .active > a:focus {
+	background-color: #95CDC0;
+}
+
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover {
+	color: #000;
+	background-color: #CEEAE1;
+}
+
+.dropdown-menu > li > a {
+	font-size: 16px;
 }
 
 header nav ul li {
