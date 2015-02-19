@@ -10,7 +10,9 @@ function printChosenPage(data) {
 	var pageContent = $('<article class="pageContent"/>');
 	// And then a headline tag for the title -
 	pageContent.append("<h2>"+data[0]["title"]+"</h2>");
+	// Assume all tags for body are already there
 	pageContent.append(data[0]["body"]);
+	pageContent.append("<figure><img src='"+data[0]["path"]+"'><figcaption>"+data[0]["caption"]+"</figcaption></figure>");
 	// Print page content
 	$("#thisPage").html(pageContent);
 }

@@ -9,7 +9,6 @@ class SqlQueries extends PDOHelper {
 		// 	":user_id" => int
 		// );
 
-		//$sql1 = "INSERT INTO pages (title, body, user_id) VALUES (" . $page_data["title"]."," . $page_data["body"].",1)";
 		$sql = "INSERT INTO pages (title, body, user_id) VALUES (:title, :body, 1)";
 		return $this->query($sql, $page_data);
 	}
@@ -40,7 +39,7 @@ class SqlQueries extends PDOHelper {
 
 	public function getChosenPage($chosen_page) {
 		$this_page = array(":pid" => $chosen_page);
-		$sql ="SELECT * FROM pages WHERE pid = :pid";
+		$sql ="SELECT * FROM pages, images WHERE pages.pid = :pid";
 		$this_page_data = $this->query($sql, $this_page);
 
 		return $this_page_data;
@@ -62,7 +61,6 @@ class SqlQueries extends PDOHelper {
 	}
 
 	
-
 	// public function searchPages($search_param) {
 	// 	$search_param = array(":search_param" => "%".$search_param."%");
 	// 	$sql = "SELECT * FROM pages WHERE title LIKE :search_param";
