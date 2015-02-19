@@ -89,7 +89,7 @@ function onDomReady() {
 		footerData[":email"] = $("#footerEmail").val();
 
 		saveFooter(footerData);
-		console.log(footerData);
+		// console.log(footerData);
 
 		return false;
 	});

@@ -23,7 +23,11 @@ nav, h1, h2, h3, h4, h5, h6{
 
 header nav {
 	height: 80px;
-	font-size: 30px;
+	font-size: 23px;
+}
+
+.navbar-default {
+	background-color: #F0F9F6;
 }
 
 header .container-fluid {
@@ -38,8 +42,13 @@ header nav li:hover > ul {
 	display: block;
 }
 
-.navbar-default {
-	background-color: #F0F9F6;
+header nav ul li {
+	position: relative;
+}
+
+header nav ul ul ul {
+  top: 0 !important;
+  left: 100% !important; 
 }
 
 .jumbotron {
@@ -50,3 +59,4 @@ header nav li:hover > ul {
 footer .navbar-text {
 	margin: 5px 15px;
 }
+

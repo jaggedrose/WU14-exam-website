@@ -38,7 +38,7 @@ function pushPopListeners() {
     var pageName = l.substring(l.lastIndexOf("/")+1);
     // If no pageName set pageName to false
     pageName = pageName || false;
-    console.log("pageName: ", pageName);
+    // console.log("pageName: ", pageName);
 
     $("main .row").children().hide();
     // and showSection
@@ -46,7 +46,7 @@ function pushPopListeners() {
   }
 
   function showSection(pageName) {
-    console.log("showSection: ", pageName);
+    // console.log("showSection: ", pageName);
     getMenus(undefined, pageName);
     // If page list is chosen, get data with Ajax
     // Elseif admin form is chosen, get data with Ajax

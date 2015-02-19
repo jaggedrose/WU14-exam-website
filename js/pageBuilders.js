@@ -55,7 +55,7 @@ function printPageForEdit(data) {
 
 
 function printFooter(data) {
-	console.log("printFooter success: ", data);
+	// console.log("printFooter success: ", data);
 	var footerText1 = $('<section class="navbar-text" id="footerText1"/>');
 	var footerText2 = $('<section class="navbar-text" id="footerText2"/>');
 	// And then append to footer

@@ -134,7 +134,7 @@ function getFooter(footerData) {
 			"footer_data": footerData
 		},
 		success:function(data) {
-			console.log("getFooter success: ", data);
+			// console.log("getFooter success: ", data);
 			printFooter(data);
 		},
 		error: function(data) {
