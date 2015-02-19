@@ -39,7 +39,7 @@ class SqlQueries extends PDOHelper {
 
 	public function getChosenPage($chosen_page) {
 		$this_page = array(":pid" => $chosen_page);
-		$sql ="SELECT * FROM pages, images WHERE pages.pid = :pid";
+		$sql ="SELECT * FROM pages, images WHERE pages.pid = :pid && images.page_id = :pid";
 		$this_page_data = $this->query($sql, $this_page);
 
 		return $this_page_data;
