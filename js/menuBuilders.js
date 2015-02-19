@@ -53,7 +53,7 @@ function makeMainMenu(menuData) {
 
 	var mainMenuUl = $('<ul class="nav navbar-nav" id="mainMenu"/>');
 	// Add home link 
-	var menuHome = $('<li><a href="index.html" class="glyphicon glyphicon-home"></a></li>');
+	var menuHome = $('<li><a href="index.html" class="glyphicon glyphicon-home"><span class="sr-only">(current)</span></a></li>');
 	// Prepend to navbar
 	mainMenuUl.prepend(menuHome);
 	// Remove old .navbar first & then replace with new html
@@ -72,12 +72,12 @@ function printMainMenu(mainMenuUl, menuTree) {
 		// var menuLink;
 		if (menuTree[i].subItems.length === 0) {
 			// If top menu has no sub menus, just make a link
-			menuLink = $('<li><a href="'+menuTree[i]["path"]+'">'+menuTree[i]["title"]+'</a></li>');
+			menuLink = $('<li><a href="'+menuTree[i]["path"]+'">'+menuTree[i]["title"]+'<span class="sr-only">(current)</span></a></li>');
 		} else {
 			//  First make the <li><a></a></li>
-			menuLink = $('<li class="dropdown"><a href="'+menuTree[i]["path"]+'">'+menuTree[i]["title"]+'</a></li>');
+			menuLink = $('<li class="dropdown"><a href="'+menuTree[i]["path"]+'" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">'+menuTree[i]["title"]+'</a></li>');
 			//  Then make then sub menu dropdown
-			var newDropdown = $('<ul class="dropdown-menu"/>');
+			var newDropdown = $('<ul class="dropdown-menu" role="menu"/>');
 			// Add dropdown to menuLink
 			menuLink.prepend(newDropdown);
 			// Recall this function to append sub menus menuLinks to the dropdpwn
