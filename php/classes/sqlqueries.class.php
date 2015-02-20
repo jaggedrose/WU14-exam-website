@@ -37,6 +37,11 @@ class SqlQueries extends PDOHelper {
 		return $this->query($sql, $footer_data);
 	}
 
+	public function saveImageInfo($image_data) {
+		$sql = "INSERT INTO images (img_title, path, alt, caption, page_id, user_id) VALUES (:i_title, :path, :alt, :caption, :page_id, 1)";
+		return $this->query($sql, $image_data);
+	}
+
 	public function updatePage($update_data) {
 		$sql = "UPDATE pages SET title=:title, body=:body WHERE pid = :pid";
 		return $this->query($sql, $update_data);

@@ -148,6 +148,24 @@ function getFooter(footerData) {
 	});
 }
 
+function saveImageInfo(imageData) {
+	$.ajax ({
+		url: "php/save_page_content.php",
+		type: "post",
+		dataType: "json",
+		data: {
+			"image_data": imageData
+		},
+		success:function(data) {
+			console.log("saveImageInfo success: ", data);
+			$("#theImageForm")[0].reset();
+		},
+		error: function(data) {
+			console.log("saveImageInfo error: ", data);
+		}
+	});
+}
+
 function getMenus(menuData, pageName) {
 	$.ajax ({
 		url: "php/get_menu_content.php",

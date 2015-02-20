@@ -96,5 +96,21 @@ function onDomReady() {
 		return false;
 	});
 
+	// Clickhandler for image form
+	$("#imageForm").submit(function() {
+
+		var imageData = {};
+		imageData[":i_title"] = $("#imageTitle").val();
+		imageData[":path"] = $("#ImageUrl").val();
+		imageData[":alt"] = $("#imageAlt").val();
+		imageData[":caption"] = $("#imageCaption").val();
+		imageData[":page_id"] = $("#imagePid").val();
+		
+		saveImageInfo(imageData);
+		console.log(imageData);
+
+		return false;
+	});
+
 }
 
