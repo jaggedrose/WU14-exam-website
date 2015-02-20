@@ -57,7 +57,7 @@ function updatePage(updateData) {
 		},
 		success: function(data) {
 			console.log("updatePage success: ", data);
-			// $("#adminForm")[0].reset();
+			$("#theAdminForm")[0].reset();
 		},
 		error: function(data) {
 			console.log("updatePage error: ", data);
@@ -77,6 +77,8 @@ function saveNewPage(pageData) {
 			console.log("saveNewPage success: ", data);
 			if ($('.menuForm input[type="checkbox"]').is(":checked")) {
 				saveMenu();
+			} else {
+				$("#theAdminForm")[0].reset();
 			}
 		},
 		error: function(data) {
@@ -100,7 +102,9 @@ function saveMenu() {
 		},
 		success: function(data) {
 			console.log("saveMenu success: ", data);
-			// $("#adminForm")[0].reset();
+			$("#theAdminForm")[0].reset();
+			$("#adminForm .newMenuForm").hide();
+			$("#adminForm .menuLinksList").hide();
 		},
 		error: function(data) {
 			console.log("saveMenu error: ", data);
@@ -118,6 +122,7 @@ function saveFooter(footerData) {
 		},
 		success:function(data) {
 			console.log("saveFooter success: ", data);
+			$("#theFooterForm")[0].reset();
 		},
 		error: function(data) {
 			console.log("saveFooter error: ", data);

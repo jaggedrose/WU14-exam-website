@@ -36,10 +36,12 @@ function printPagesList(data) {
 		$("#pageList table").append(pageListInfo);
 	}
 
+	// Show admin form for Update Page
 	$(".editPage").click(function() {
 		getPageForEdit($(this).val());
 		$("#myAdminPageMenu").show();
       $("#adminForm").fadeIn(200);
+      $(".menuForm").hide();
       $("#pageList").hide();
 		$("#updateFormBtn").show();
 		$("#adminFormBtn").hide();
