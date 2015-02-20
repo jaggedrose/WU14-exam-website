@@ -38,7 +38,7 @@ function pushPopListeners() {
     var pageName = l.substring(l.lastIndexOf("/")+1);
     // If no pageName set pageName to false
     pageName = pageName || false;
-    // console.log("pageName: ", pageName);
+    console.log("pageName: ", pageName);
 
     $("main .row").children().hide();
     // and showSection
@@ -50,7 +50,8 @@ function pushPopListeners() {
 
     // If no pageName was received (or home was received), show "home"
     if (!pageName || pageName == "home") {
-      pageName = "home";
+      pageName = 79;
+      $("#thisPage").show();
     }
 
     getMenus(undefined, pageName);

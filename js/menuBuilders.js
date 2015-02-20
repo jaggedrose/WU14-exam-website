@@ -72,7 +72,7 @@ function printMainMenu(mainMenuUl, menuTree) {
 		// Checking data for sub menus
 		if (menuTree[i].subItems.length === 0) {
 			// Finding "home" menu & replace text with icon
-			if (menuTree[i]["title"].toLowerCase() === "home") {
+			if (menuTree[i]["path"] === 79) {
 				var menuHome = $('<li><a href="'+menuTree[i]["path"]+'" class="glyphicon glyphicon-home"><span class="sr-only">(current)</span></a></li>');
 				// And prepend to html
 				mainMenuUl.prepend(menuHome);

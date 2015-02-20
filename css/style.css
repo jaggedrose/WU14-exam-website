@@ -9,7 +9,6 @@ html, body {
 	background-repeat: no-repeat;
 	background-attachment: fixed;*/
 	font-family: 'Gentium Basic', serif;
-	/*font-size: 20px;*/
 	/*position: relative;*/
 	height: 100%;
 }
@@ -34,6 +33,10 @@ h4, h5, h6 {
 
 header nav {
 	height: 80px;		
+}
+
+p {
+	font-size: 15px;
 }
 
 .navbar-default {
@@ -83,26 +86,35 @@ header nav ul ul ul {
   left: 100% !important; 
 }
 
-.jumbotron {
-	z-index: 3;
-	background-color: #fff;
-}
-
 .box {
 	margin-bottom: 20px;
-	padding: 30px 15px;
+	padding-top: 20px;
 	background: #fff;
-	border-radius: 10px;
+	border-radius: 7px;
+}
+
+.pageContent {
+	margin: 10px 30px 30px 30px;
+	padding-bottom: 10px;
 }
 
 hr {
-    max-width: 400px;
-    border-color: #999999;
+	max-width: 400px;
+	border-color: #999999;
 }
 
-.img-left {
-    float: none;
-    margin: 0 auto 0;
+figure {
+	font-size: 15px;
+	margin: 3px 30px 30px 0;
+	line-height: 100%;
+}
+
+figure img {
+	margin-bottom: 8px;
+}
+
+figure figcaption {
+	line-height: 125%;
 }
 
 footer .navbar-text {

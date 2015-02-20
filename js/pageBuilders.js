@@ -9,13 +9,13 @@ function printChosenPage(data) {
 	// Build html for page, first the article tag
 	var pageContent = $('<article class="pageContent"/>');
 	// And then a headline tag for the title -
-	pageContent.append("<h2>"+data[0]["title"]+"</h2>");
-	// Assume all tags for body are already there
-	pageContent.append(data[0]["body"]);
+	pageContent.append('<hr><h2 class="text-center"><strong>'+data[0]["title"]+'</strong></h2><hr>');
 	// Checking if page has image
 	if (data["images"].length > 0) {
-		pageContent.append("<figure><img src='"+data["images"][0]["path"]+"'><figcaption>"+data["images"][0]["caption"]+"</figcaption></figure>");
+		pageContent.append('<figure class="pull-left"><img class="img-responsive img-rounded" src="'+data["images"][0]["path"]+'"><figcaption>'+data["images"][0]["caption"]+'</figcaption></figure>');
 	}
+	// Assume all tags for body are already there
+	pageContent.append(data[0]["body"]);
 	// Print page content
 	$("#thisPage").html(pageContent);
 }
