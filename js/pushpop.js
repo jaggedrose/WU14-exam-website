@@ -50,7 +50,7 @@ function pushPopListeners() {
 
     // If no pageName was received (or home was received), show "home"
     if (!pageName || pageName == "home") {
-      pageName = 79;
+      pageName = 1;
       $("#thisPage").show();
     }
 

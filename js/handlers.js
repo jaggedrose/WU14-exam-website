@@ -5,6 +5,7 @@
 function onDomReady() {
 
 	pushPopListeners();
+	getFooter();
 
 	
 	$("#thisPage").hide();
