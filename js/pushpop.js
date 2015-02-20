@@ -49,7 +49,7 @@ function pushPopListeners() {
     // console.log("showSection: ", pageName);
 
     // If no pageName was received (or home was received), show "home"
-    if (!pageName || pageName == "home") {
+    if (!pageName) {
       pageName = 1;
       $("#thisPage").show();
     }

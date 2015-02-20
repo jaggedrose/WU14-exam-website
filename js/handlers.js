@@ -4,10 +4,8 @@
 
 function onDomReady() {
 
-	pushPopListeners();
 	getFooter();
 
-	
 	$("#thisPage").hide();
 	$("#adminForm .newMenuForm").hide();
 	$("#adminForm .menuLinksList").hide();
@@ -15,6 +13,7 @@ function onDomReady() {
 	$("#footerForm").hide();
 	$("#imageForm").hide();
 
+	pushPopListeners();
 
 	// admin button clickhandler - to show/hide admin page
 	$('#adminLogin').click(function() {
