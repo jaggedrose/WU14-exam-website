@@ -47,7 +47,14 @@ function pushPopListeners() {
 
   function showSection(pageName) {
     // console.log("showSection: ", pageName);
+
+    // If no pageName was received (or home was received), show "home"
+    if (!pageName || pageName == "home") {
+      pageName = "home";
+    }
+
     getMenus(undefined, pageName);
+    getPagesList();
     // If page list is chosen, get data with Ajax
     // Elseif admin form is chosen, get data with Ajax
     // Else get chosen page
@@ -65,7 +72,6 @@ function pushPopListeners() {
     }
     else {
       getChosenPage(pageName);
-
       pageName = "page";
        $("#thisPage").fadeIn(300);
     }
