@@ -9,7 +9,7 @@ function onDomReady() {
 	$("#thisPage").hide();
 	$("#adminForm .newMenuForm").hide();
 	$("#adminForm .menuLinksList").hide();
-	$("#adminForm #updateFormBtn").hide();
+	$("#updateForm").hide();
 	$("#footerForm").hide();
 	$("#imageForm").hide();
 
@@ -34,48 +34,43 @@ function onDomReady() {
 		$(".menuForm #menuTitle").attr("required", $(this).is(":checked"));
 	});
 
-	var edit = false;
+	// var edit = false;
 
 	// Clickhandler for admin form - Save new page
-	$("#adminForm #adminFormBtn").click(function() {
-		edit = false;
-		// console.log("edit: ", $(this).data("edit"));
-		//$("#adminForm").submit();
-
-		// return false;
-	});
-
-		// Clickhandler for admin form - Update page
-	$("#adminForm #updateFormBtn").click(function() {
-		edit = true;
-		//$("#adminForm").submit();
-
-		
-
-		// return false;
-	});
-
-
 	$("#adminForm").submit(function() {
-		if (!edit) {
-			var pageData = {};
+		var pageData = {};
 			pageData[":title"] = $("#pageTitle").val();
 			pageData[":body"] = $("#pageContent").val();
 
 			saveNewPage(pageData);
 			console.log(pageData);
-		} else {
-			var updateData = {};
-			updateData[":title"] = $("#pageTitle").val();
-			updateData[":body"] = $("#pageContent").val();
-			updateData[":pid"] = $("#updateFormBtn").val();
-
-			updatePage(updateData);
-			console.log(updateData);
-		}
 
 		return false;
 	});
+
+		// Clickhandler for admin form - Update page
+	$("#updateForm").submit(function() {
+		var updateData = {};
+			updateData[":title"] = $("#updateTitle").val();
+			updateData[":body"] = $("#updateContent").val();
+			updateData[":pid"] = $("#updateFormBtn").val();
+
+			updatePage(updateData);
+			console.log(updateData)
+
+		return false;
+	});
+
+
+	// $("#adminForm").submit(function() {
+	// 	if (!edit) {
+			
+	// 	} else {
+	// 		;
+	// 	}
+
+	// 	return false;
+	// });
 		
 
 	// Clickhandler for footer form

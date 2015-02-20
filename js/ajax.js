@@ -57,7 +57,10 @@ function updatePage(updateData) {
 		},
 		success: function(data) {
 			console.log("updatePage success: ", data);
-			$("#theAdminForm")[0].reset();
+			$("#theUpdateForm")[0].reset();
+			getPagesList();
+			$("#pageList").fadeIn(300);
+			$("#updateForm").hide();
 		},
 		error: function(data) {
 			console.log("updatePage error: ", data);

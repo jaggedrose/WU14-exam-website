@@ -40,12 +40,8 @@ function printPagesList(data) {
 	$(".editPage").click(function() {
 		getPageForEdit($(this).val());
 		$("#myAdminPageMenu").show();
-      $("#adminForm").fadeIn(200);
-      $(".menuForm").hide();
+      $("#updateForm").fadeIn(200);
       $("#pageList").hide();
-		$("#updateFormBtn").show();
-		$("#adminFormBtn").hide();
-
 	});
 }
 
@@ -53,8 +49,8 @@ function printPagesList(data) {
 function printPageForEdit(data) {
 	// console.log("printPageForEdit success: ", data);
 	
-	$("#pageTitle").val(data[0]["title"]);
-	$("#pageContent").val(data[0]["body"]);
+	$("#updateTitle").val(data[0]["title"]);
+	$("#updateContent").val(data[0]["body"]);
 	$("#updateFormBtn").prop('value', data[0]["pid"]);
 }
 
