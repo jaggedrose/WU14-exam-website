@@ -71,6 +71,10 @@ function pushPopListeners() {
       $("#myAdminPageMenu").show();
       $("#footerForm").fadeIn(300);
     }
+    else if (pageName == "image-form") {
+      $("#myAdminPageMenu").show();
+      $("#imageForm").fadeIn(300);
+    }
     else {
       getChosenPage(pageName);
       pageName = "page";

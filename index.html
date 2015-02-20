@@ -60,7 +60,8 @@
 						<ul class="nav nav-tabs">
 							<li role="presentation"><a href="page-list">Page List</a></li>
 							<li role="presentation"><a href="admin-form">Add Page</a></li>
-							<li role="presentation"><a href="footer-form">Add footer</a></li>
+							<li role="presentation"><a href="footer-form">Add Footer</a></li>
+							<li role="presentation"><a href="image-form">Add Image Info</a></li>
 						</ul>
 					</div>				
 				</section>
@@ -151,6 +152,36 @@
 								
 						<div class="form-group footerFormSubmitBtn">
 							<button type="submit" id="footerFormBtn" class="btn btn-success btn-lg">Save Footer</button>
+						</div>
+					</form>
+				</section>
+
+				<section id="imageForm" class="box col-xs-12 col-sm-12 col-md-10 col-lg-10 col-xs-offset-0 col-sm-offset-0 col-md-offset-1 col-lg-offset-1">
+					<form id="theImageForm" class="pageContent">
+						<div class="form-group">
+							<h3>Add Image Information</h3>
+						</div>
+						<div class="form-group">
+							<label for="imageTitle">Image Title:</label>
+							<input type="text" class="form-control" id="imageTitle" placeholder="Image title" required>
+						</div>
+						<div class="form-group">
+							<label for="ImageUrl">Image Url:</label>
+							<input type="text" class="form-control" id="ImageUrl" placeholder="Url" required>
+						</div>
+						<div class="form-group">
+							<label for="imageAlt">Image alt:</label>
+							<input type="text" class="form-control" id="imageAlt" placeholder="Alt" required>
+						</div>
+						<div class="form-group">
+							<label for="imageCaption">Image Caption:</label>
+							<input type="text" class="form-control" id="imageCaption" placeholder="Caption" required>
+						</div>
+						<div class="form-group imageList">
+						</div>
+														
+						<div class="form-group imageFormSubmitBtn">
+							<button type="submit" id="imageFormBtn" class="btn btn-success btn-lg">Save</button>
 						</div>
 					</form>
 				</section>

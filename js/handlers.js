@@ -13,6 +13,7 @@ function onDomReady() {
 	$("#adminForm .menuLinksList").hide();
 	$("#adminForm #updateFormBtn").hide();
 	$("#footerForm").hide();
+	$("#imageForm").hide();
 
 
 	// admin button clickhandler - to show/hide admin page
