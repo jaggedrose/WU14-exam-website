@@ -5,7 +5,7 @@
 function makeMenuTree(menuData) {
 	var menuTree = [];
 	menuData.sort(function(x,y) {
-		return x["placement"] > y["placement"];
+		return x["placement"] - y["placement"];
 	});
 
 	// i = top menu
@@ -52,11 +52,11 @@ function makeMainMenu(menuData) {
 	var menuTree = makeMenuTree(menuData);
 
 	var mainMenuUl = $('<ul class="nav navbar-nav" id="mainMenu"/>');
-	// Add home link 
-	var menuHome = $('<li><a href="index.html" class="glyphicon glyphicon-home"><span class="sr-only">(current)</span></a></li>');
+	 
+	// var menuHome = $('<li><a href="index.html" class="glyphicon glyphicon-home"><span class="sr-only">(current)</span></a></li>');
 	// Prepend to navbar
-	mainMenuUl.prepend(menuHome);
-	// Remove old .navbar first & then replace with new html
+	// mainMenuUl.prepend(menuHome);
+	// Remove old navbar first & then replace with new html
 	$("header .navbar-collapse").find("#mainMenu").remove();
 	$("header .navbar-collapse").html(mainMenuUl);
 	printMainMenu(mainMenuUl, menuTree);
@@ -69,25 +69,36 @@ function printMainMenu(mainMenuUl, menuTree) {
 	for (var i = 0; i < menuTree.length; i++) {
 		// Make a new <li>
 		var menuLink;
-		// var menuLink;
+		// Checking data for sub menus
 		if (menuTree[i].subItems.length === 0) {
-			// If top menu has no sub menus, just make a link
-			menuLink = $('<li><a href="'+menuTree[i]["path"]+'">'+menuTree[i]["title"]+'<span class="sr-only">(current)</span></a></li>');
-		} else {
+			// Finding "home" menu & replace text with icon
+			if (menuTree[i]["title"].toLowerCase() === "home") {
+				var menuHome = $('<li><a href="'+menuTree[i]["path"]+'" class="glyphicon glyphicon-home"><span class="sr-only">(current)</span></a></li>');
+				// And prepend to html
+				mainMenuUl.prepend(menuHome);
+			} else {
+				// If menu link is a top menu without sub menus, just make a link
+				menuLink = $('<li><a href="'+menuTree[i]["path"]+'">'+menuTree[i]["title"]+'<span class="sr-only">(current)</span></a></li>');
+			}
+			// And append to html
+			mainMenuUl.append(menuLink);
+		}
+		else {
 			//  First make the <li><a></a></li>
 			menuLink = $('<li class="dropdown"><a href="'+menuTree[i]["path"]+'" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">'+menuTree[i]["title"]+'</a></li>');
 			//  Then make then sub menu dropdown
 			var newDropdown = $('<ul class="dropdown-menu" role="menu"/>');
 			// Add dropdown to menuLink
 			menuLink.prepend(newDropdown);
+			// And append to html
+			mainMenuUl.append(menuLink);
 			// Recall this function to append sub menus menuLinks to the dropdpwn
 			printMainMenu(newDropdown, menuTree[i].subItems);
 		}
-		// And append to html
-		mainMenuUl.append(menuLink);
 	}
 	return mainMenuUl;
 }
+
 
 // Make the admin form menu <select> 
 function makeMenuListSelect(menuData) {
@@ -98,7 +109,6 @@ function makeMenuListSelect(menuData) {
 	// add an empty top option to the select
 	var topMenu = $('<option value="">Top Menu</option>');
 	// Assume all menu links are from the same menu (menu-main-menu)
-	topMenu.data("menuItem", {mlid: null, menu:"menu-main-menu"});
 	menuSelect.append(topMenu);
 
 	// And append to the admin form

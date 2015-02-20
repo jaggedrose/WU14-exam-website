@@ -21,8 +21,14 @@ class SqlQueries extends PDOHelper {
 		$last_pid = $last_pid[0]["pid"];
 
 		// $page_path = "pageid=".$last_pid;
-		// TODO - Changed $page_path to $last_pid, not using "pageid=" string for now
-		$sql2 = "INSERT INTO menu_links (title, placement, plid, path, menu) VALUES (:m_title, :placement, :plid, '$last_pid', 'menu-main-menu')";
+		
+		if ($menu_link_data[":plid"] === "") {
+			unset($menu_link_data[":plid"]);
+			// TODO - Changed $page_path to $last_pid, not using "pageid=" string for now
+			$sql2 = "INSERT INTO menu_links (title, placement, path, menu) VALUES (:m_title, :placement, '$last_pid', 'menu-main-menu')";
+		} else {
+			$sql2 = "INSERT INTO menu_links (title, placement, plid, path, menu) VALUES (:m_title, :placement, :plid, '$last_pid', 'menu-main-menu')";
+		}	
 		return $this->query($sql2, $menu_link_data);
 	}
 
@@ -36,14 +42,18 @@ class SqlQueries extends PDOHelper {
 		return $this->query($sql, $update_data);
 	}
 
-
 	public function getChosenPage($chosen_page) {
 		$this_page = array(":pid" => $chosen_page);
-		$sql ="SELECT * FROM pages, images WHERE pages.pid = :pid && images.page_id = :pid";
-		$this_page_data = $this->query($sql, $this_page);
+		$sql1 ="SELECT * FROM pages WHERE pid = :pid";
+		$this_page_data = $this->query($sql1, $this_page);
+
+		$sql2 ="SELECT * FROM images WHERE page_id = :pid";
+		$image_data = $this->query($sql2, $this_page);
+
+		$this_page_data["images"] = $image_data;
 
 		return $this_page_data;
-	}	
+	}
 
 	public function getPagesList() {
 		$sql = "SELECT pages.pid, pages.title, pages.body, pages.created, CONCAT(users.fname, ' ', users.lname) as author FROM pages, users";

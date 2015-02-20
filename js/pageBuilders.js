@@ -12,7 +12,10 @@ function printChosenPage(data) {
 	pageContent.append("<h2>"+data[0]["title"]+"</h2>");
 	// Assume all tags for body are already there
 	pageContent.append(data[0]["body"]);
-	pageContent.append("<figure><img src='"+data[0]["path"]+"'><figcaption>"+data[0]["caption"]+"</figcaption></figure>");
+	// Checking if page has image
+	if (data["images"].length > 0) {
+		pageContent.append("<figure><img src='"+data["images"][0]["path"]+"'><figcaption>"+data["images"][0]["caption"]+"</figcaption></figure>");
+	}
 	// Print page content
 	$("#thisPage").html(pageContent);
 }
