@@ -1,8 +1,13 @@
 html, body {
-	background-image: url('../imgs/bckgrdhome.jpg');
+	background: url("../imgs/bckgrdhome.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+	/*background-image: url('../imgs/bckgrdhome.jpg');
 	background-size: cover;
 	background-repeat: no-repeat;
-	background-attachment: fixed;
+	background-attachment: fixed;*/
 	font-family: 'Gentium Basic', serif;
 	/*font-size: 20px;*/
 	/*position: relative;*/
@@ -17,13 +22,18 @@ main {
   padding-top: 120px;
 }
 
-nav, h1, h2, h3, h4, h5, h6{
+nav, h1, h2, h3 {
+	font-family: 'Philosopher', sans-serif;
+	text-transform: uppercase;
+	font-size: 23px;
+}
+
+h4, h5, h6 {
 	font-family: 'Philosopher', sans-serif;
 }
 
 header nav {
-	height: 80px;
-	font-size: 25px;
+	height: 80px;		
 }
 
 .navbar-default {
@@ -61,7 +71,7 @@ header nav li:hover > ul {
 }
 
 .dropdown-menu > li > a {
-	font-size: 16px;
+	font-size: 15px;
 }
 
 header nav ul li {
@@ -76,6 +86,23 @@ header nav ul ul ul {
 .jumbotron {
 	z-index: 3;
 	background-color: #fff;
+}
+
+.box {
+	margin-bottom: 20px;
+	padding: 30px 15px;
+	background: #fff;
+	border-radius: 10px;
+}
+
+hr {
+    max-width: 400px;
+    border-color: #999999;
+}
+
+.img-left {
+    float: none;
+    margin: 0 auto 0;
 }
 
 footer .navbar-text {
