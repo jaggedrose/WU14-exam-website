@@ -17,6 +17,10 @@ function pushPopListeners() {
       // assume they are leaving the site
       return;
     }
+    if ($(this).attr("href").indexOf("javascript") === 0) {
+      // assume they are leaving the site
+      return;
+    }
 
     $("main .row").children().hide();
     
@@ -38,7 +42,7 @@ function pushPopListeners() {
     var pageName = l.substring(l.lastIndexOf("/")+1);
     // If no pageName set pageName to false
     pageName = pageName || false;
-    console.log("pageName: ", pageName);
+    // console.log("pageName: ", pageName);
 
     $("main .row").children().hide();
     // and showSection

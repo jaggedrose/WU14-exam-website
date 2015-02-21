@@ -12,6 +12,7 @@
 		<script src="js/pageBuilders.js"></script>
 		<script src="js/menuBuilders.js"></script>
 		<script src="js/handlers.js"></script>
+		<script src="ckeditor/ckeditor.js"></script>
 		<script src="js/main.js"></script>
 		<!-- include our .css -->
 		<link rel="stylesheet" type="text/css" href="css/meyerreset.css">
@@ -95,7 +96,8 @@
 						
 						<div class="form-group">
 							<label for="pageContent">Page Content:</label>
-							<textarea class="form-control" rows="15" id="pageContent" placeholder="Enter page content" required></textarea>
+							<textarea class="form-control" rows="15" name="pageContent" id="pageContent" placeholder="Enter page content" required></textarea>
+							<script type="text/javascript">CKEDITOR.replace("pageContent");</script>
 						</div>
 
 						<div class="form-group menuForm">
