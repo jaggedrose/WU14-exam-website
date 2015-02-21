@@ -1,9 +1,9 @@
 // 
-// JS to build pages
+// JS to build pages & footer
 // 
 
 function printChosenPage(data) {
-	console.log("printChosenPage success: ", data);
+	// console.log("printChosenPage success: ", data);
 	// Empty section, just to be safe
 	$("#thisPage").html("");
 	// Build html for page, first the article tag
@@ -36,6 +36,7 @@ function printPagesList(data) {
 		$("#pageList table").append(pageListInfo);
 	}
 
+
 	// Show admin form for Update Page
 	$(".editPage").click(function() {
 		getPageForEdit($(this).val());
@@ -45,15 +46,12 @@ function printPagesList(data) {
 	});
 }
 
-
 function printPageForEdit(data) {
-	// console.log("printPageForEdit success: ", data);
-	
+	// console.log("printPageForEdit success: ", data);	
 	$("#updateTitle").val(data[0]["title"]);
 	$("#updateContent").val(data[0]["body"]);
 	$("#updateFormBtn").prop('value', data[0]["pid"]);
 }
-
 
 function printFooter(data) {
 	// console.log("printFooter success: ", data);
@@ -65,4 +63,3 @@ function printFooter(data) {
 	// Print footer content
 	$(".footerContent").after(footerText1, footerText2);
 }
-

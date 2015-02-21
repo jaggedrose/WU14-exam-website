@@ -46,32 +46,27 @@ function makeMenuTree(menuData) {
 	return menuTree;
 }
 
-
 // Make main menu in navbar
 function makeMainMenu(menuData) {
 	var menuTree = makeMenuTree(menuData);
 
 	var mainMenuUl = $('<ul class="nav navbar-nav" id="mainMenu"/>');
 	 
-	// var menuHome = $('<li><a href="index.html" class="glyphicon glyphicon-home"><span class="sr-only">(current)</span></a></li>');
-	// Prepend to navbar
-	// mainMenuUl.prepend(menuHome);
 	// Remove old navbar first & then replace with new html
 	$("header .navbar-collapse").find("#mainMenu").remove();
 	$("header .navbar-collapse").html(mainMenuUl);
 	printMainMenu(mainMenuUl, menuTree);
 }
 
-
 function printMainMenu(mainMenuUl, menuTree) {
-	console.log("printMainMenu success: ", menuTree);
+	// console.log("printMainMenu success: ", menuTree);
 	// Loop through menuTree to get top menu links
 	for (var i = 0; i < menuTree.length; i++) {
 		// Make a new <li>
 		var menuLink;
 		// Checking data for sub menus
 		if (menuTree[i].subItems.length === 0) {
-			// Finding "home" menu & replace text with icon
+			// Finding "home" menu & replace text with icon, home is first page in DB
 			if (menuTree[i]["path"] === 1) {
 				var menuHome = $('<li><a href="'+menuTree[i]["path"]+'" class="glyphicon glyphicon-home"><span class="sr-only">(current)</span></a></li>');
 				// And prepend to html
@@ -92,13 +87,12 @@ function printMainMenu(mainMenuUl, menuTree) {
 			menuLink.prepend(newDropdown);
 			// And append to html
 			mainMenuUl.append(menuLink);
-			// Recall this function to append sub menus menuLinks to the dropdpwn
+			// Recall this function to append sub menus menuLinks to the dropdown
 			printMainMenu(newDropdown, menuTree[i].subItems);
 		}
 	}
 	return mainMenuUl;
 }
-
 
 // Make the admin form menu <select> 
 function makeMenuListSelect(menuData) {
@@ -116,7 +110,6 @@ function makeMenuListSelect(menuData) {
 	printMenuListOptions(menuSelect, menuTree);
 }
 
-
 // Print the admin form menu <options> in the <select>
 function printMenuListOptions(menuSelect, menuTree) {
 	// console.log("printMenuListOptions success: ", menuTree);
@@ -130,6 +123,5 @@ function printMenuListOptions(menuSelect, menuTree) {
 			var subMenu = menuTree[i].subItems[j];
 			menuLinkList.append('<option value="'+subMenu["mlid"]+'">-> '+subMenu["title"]+'</option>');
 		}
-
 	}
 }

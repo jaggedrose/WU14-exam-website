@@ -74,7 +74,6 @@ class SqlQueries extends PDOHelper {
 		$sql = "SELECT * FROM footer";
 		return $this->query($sql);
 	}
-
 	
 	// public function searchPages($search_param) {
 	// 	$search_param = array(":search_param" => "%".$search_param."%");
@@ -83,4 +82,3 @@ class SqlQueries extends PDOHelper {
 	// }
 
 }
-

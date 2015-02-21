@@ -29,7 +29,6 @@ function pushPopListeners() {
   // (listen to forward/backward buttons in the browser)
   addEventListener("popstate",onPopAndStart);
 
-  
   // Run this function on popstate and initial load
   function onPopAndStart(){
     // Read our url and extract the page name
@@ -48,17 +47,16 @@ function pushPopListeners() {
   function showSection(pageName) {
     // console.log("showSection: ", pageName);
 
-    // If no pageName was received (or home was received), show "home"
+    // If no pageName was received, show first page in DB as "home"
     if (!pageName) {
       pageName = 1;
       $("#thisPage").show();
     }
 
     getMenus(undefined, pageName);
-    
 
     // If page list is chosen, get data with Ajax
-    // Elseif admin form is chosen, get data with Ajax
+    // Elseif whichever form is chosen, get data with Ajax
     // Else get chosen page
     if (pageName == "page-list") {
       $("#myAdminPageMenu").show();
@@ -83,6 +81,5 @@ function pushPopListeners() {
        $("#thisPage").fadeIn(300);
     }
   }
-
 
 }

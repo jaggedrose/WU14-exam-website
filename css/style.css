@@ -4,12 +4,7 @@ html, body {
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
-	/*background-image: url('../imgs/bckgrdhome.jpg');
-	background-size: cover;
-	background-repeat: no-repeat;
-	background-attachment: fixed;*/
 	font-family: 'Gentium Basic', serif;
-	/*position: relative;*/
 	height: 100%;
 }
 
@@ -123,3 +118,16 @@ footer .navbar-text {
 	margin: 5px 15px;
 }
 
+@media only screen and (max-width: 768px) {
+
+ 	body {
+		background-image: url('../imgs/bckgrdhome_medium.jpg');
+	}
+}
+
+@media only screen and (max-width: 480px) {
+
+	body {
+		background-image: url('../imgs/bckgrdhome_small.jpg');
+	}
+}

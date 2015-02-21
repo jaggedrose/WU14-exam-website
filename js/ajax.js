@@ -56,7 +56,7 @@ function updatePage(updateData) {
 			"update_data": updateData
 		},
 		success: function(data) {
-			console.log("updatePage success: ", data);
+			// console.log("updatePage success: ", data);
 			$("#theUpdateForm")[0].reset();
 			getPagesList();
 			$("#pageList").fadeIn(300);
@@ -77,7 +77,7 @@ function saveNewPage(pageData) {
 			"page_data": pageData
 		},
 		success: function(data) {
-			console.log("saveNewPage success: ", data);
+			// console.log("saveNewPage success: ", data);
 			if ($('.menuForm input[type="checkbox"]').is(":checked")) {
 				saveMenu();
 			} else {
@@ -104,7 +104,7 @@ function saveMenu() {
 			"menu_link_data": menuLinkData
 		},
 		success: function(data) {
-			console.log("saveMenu success: ", data);
+			// console.log("saveMenu success: ", data);
 			$("#theAdminForm")[0].reset();
 			$("#adminForm .newMenuForm").hide();
 			$("#adminForm .menuLinksList").hide();
@@ -124,7 +124,7 @@ function saveFooter(footerData) {
 			"footer_data": footerData
 		},
 		success:function(data) {
-			console.log("saveFooter success: ", data);
+			// console.log("saveFooter success: ", data);
 			$("#theFooterForm")[0].reset();
 		},
 		error: function(data) {
@@ -160,7 +160,7 @@ function saveImageInfo(imageData) {
 			"image_data": imageData
 		},
 		success:function(data) {
-			console.log("saveImageInfo success: ", data);
+			// console.log("saveImageInfo success: ", data);
 			$("#theImageForm")[0].reset();
 		},
 		error: function(data) {
@@ -194,10 +194,6 @@ function getMenus(menuData, pageName) {
 		}
 	});
 }
-
-
-
-
 
 // function getPages(search_param) {
 // 	$.ajax ({

@@ -1,5 +1,5 @@
 // 
-// Click Handlers
+// Click Handlers & how/hides
 // 
 
 function onDomReady() {
@@ -34,16 +34,14 @@ function onDomReady() {
 		$(".menuForm #menuTitle").attr("required", $(this).is(":checked"));
 	});
 
-	// var edit = false;
-
-	// Clickhandler for admin form - Save new page
+		// Clickhandler for admin form - Save new page
 	$("#adminForm").submit(function() {
 		var pageData = {};
 			pageData[":title"] = $("#pageTitle").val();
 			pageData[":body"] = $("#pageContent").val();
 
 			saveNewPage(pageData);
-			console.log(pageData);
+			// console.log(pageData);
 
 		return false;
 	});
@@ -56,22 +54,10 @@ function onDomReady() {
 			updateData[":pid"] = $("#updateFormBtn").val();
 
 			updatePage(updateData);
-			console.log(updateData)
+			// console.log(updateData)
 
 		return false;
 	});
-
-
-	// $("#adminForm").submit(function() {
-	// 	if (!edit) {
-			
-	// 	} else {
-	// 		;
-	// 	}
-
-	// 	return false;
-	// });
-		
 
 	// Clickhandler for footer form
 	$("#footerForm").submit(function() {
@@ -101,10 +87,9 @@ function onDomReady() {
 		imageData[":page_id"] = $("#imagePid").val();
 		
 		saveImageInfo(imageData);
-		console.log(imageData);
+		// console.log(imageData);
 
 		return false;
 	});
 
 }
-
